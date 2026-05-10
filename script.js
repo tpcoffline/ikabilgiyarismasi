@@ -73,7 +73,7 @@ let currentGameQuestionIdx = 0;
 let anonymousCounter = 0;
 
 // --- Ayarlar ---
-let quizSettings = { questionCount: 5, difficultyMap: [0,0,1,1,2] };
+let quizSettings = { questionCount: 5, difficultyMap: [0,0,1,1,2], timePerQuestion: 15 };
 // 0=kolay, 1=orta, 2=zor
 
 function loadSettings() {
@@ -243,7 +243,7 @@ let pauseStart = 0;
 function startTimer() {
     questionStartTime = Date.now();
     pausedTime = 0;
-    const maxTime = quizSettings.questionCount * 15;
+    const maxTime = quizSettings.questionCount * (quizSettings.timePerQuestion || 15);
     timerInterval = setInterval(() => {
         const elapsed = (Date.now() - gameStartTime - pausedTime) / 1000;
         document.getElementById('timer-text').textContent = elapsed.toFixed(1) + 's';
@@ -271,7 +271,7 @@ function resumeTimer() {
         pausedTime += Date.now() - pauseStart;
         pauseStart = 0;
     }
-    const maxTime = quizSettings.questionCount * 15;
+    const maxTime = quizSettings.questionCount * (quizSettings.timePerQuestion || 15);
     timerInterval = setInterval(() => {
         const elapsed = (Date.now() - gameStartTime - pausedTime) / 1000;
         document.getElementById('timer-text').textContent = elapsed.toFixed(1) + 's';
@@ -496,6 +496,7 @@ function closeAdmin() { document.getElementById('admin-modal').classList.add('hi
 // --- Ayarlar UI ---
 function loadSettingsUI() {
     document.getElementById('settings-question-count').value = quizSettings.questionCount;
+    document.getElementById('settings-time-per-question').value = quizSettings.timePerQuestion || 15;
     renderDiffDistribution();
 }
 
@@ -528,6 +529,7 @@ document.addEventListener('change', (e) => {
 
 function saveSettings() {
     quizSettings.questionCount = parseInt(document.getElementById('settings-question-count').value) || 5;
+    quizSettings.timePerQuestion = parseInt(document.getElementById('settings-time-per-question').value) || 15;
     saveSettings_data();
     alert('Ayarlar kaydedildi!');
 }
