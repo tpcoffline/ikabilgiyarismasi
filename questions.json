@@ -1,0 +1,1872 @@
+[
+    {
+        "text": "Türkiye Cumhuriyeti hangi tarihte ilan edilmiştir?",
+        "options": [
+            "29 Ekim 1923",
+            "23 Nisan 1920",
+            "19 Mayıs 1919",
+            "30 Ağustos 1922"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye Büyük Millet Meclisi hangi tarihte açılmıştır?",
+        "options": [
+            "23 Nisan 1920",
+            "29 Ekim 1923",
+            "19 Mayıs 1919",
+            "1 Kasım 1922"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Atatürk'ün Samsun'a çıktığı tarih hangisidir?",
+        "options": [
+            "19 Mayıs 1919",
+            "23 Nisan 1920",
+            "30 Ağustos 1922",
+            "29 Ekim 1923"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin başkenti neresidir?",
+        "options": [
+            "Ankara",
+            "İstanbul",
+            "İzmir",
+            "Bursa"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "İstiklal Marşı'nın yazarı kimdir?",
+        "options": [
+            "Mehmet Akif Ersoy",
+            "Namık Kemal",
+            "Ziya Gökalp",
+            "Tevfik Fikret"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "İstiklal Marşı'nın bestecisi kimdir?",
+        "options": [
+            "Osman Zeki Üngör",
+            "Mehmet Akif Ersoy",
+            "Cemal Reşit Rey",
+            "Ahmet Adnan Saygun"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'nin en yüksek dağı hangisidir?",
+        "options": [
+            "Ağrı Dağı",
+            "Erciyes Dağı",
+            "Uludağ",
+            "Kaçkar Dağı"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin en uzun nehri hangisidir?",
+        "options": [
+            "Kızılırmak",
+            "Fırat",
+            "Dicle",
+            "Sakarya"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'nin en büyük gölü hangisidir?",
+        "options": [
+            "Van Gölü",
+            "Tuz Gölü",
+            "Beyşehir Gölü",
+            "Eğirdir Gölü"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin en kalabalık ili hangisidir?",
+        "options": [
+            "İstanbul",
+            "Ankara",
+            "İzmir",
+            "Bursa"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin yüz ölçümü bakımından en büyük ili hangisidir?",
+        "options": [
+            "Konya",
+            "Ankara",
+            "Sivas",
+            "Erzurum"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'nin en küçük yüz ölçümüne sahip ili hangisidir?",
+        "options": [
+            "Yalova",
+            "Kilis",
+            "Bartın",
+            "Düzce"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Pamukkale Travertenleri hangi ilimizdedir?",
+        "options": [
+            "Denizli",
+            "Aydın",
+            "Muğla",
+            "Burdur"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Kapadokya en çok hangi doğal oluşumlarıyla bilinir?",
+        "options": [
+            "Peribacaları",
+            "Travertenler",
+            "Fiyortlar",
+            "Buzullar"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Nemrut Dağı hangi ilimizdedir?",
+        "options": [
+            "Adıyaman",
+            "Malatya",
+            "Şanlıurfa",
+            "Diyarbakır"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Ani Harabeleri hangi ilimizdedir?",
+        "options": [
+            "Kars",
+            "Erzurum",
+            "Ağrı",
+            "Van"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Efes Antik Kenti hangi ilimizdedir?",
+        "options": [
+            "İzmir",
+            "Aydın",
+            "Muğla",
+            "Denizli"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Truva Antik Kenti hangi ilimizdedir?",
+        "options": [
+            "Çanakkale",
+            "Balıkesir",
+            "İzmir",
+            "Bursa"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Göbeklitepe hangi ilimizdedir?",
+        "options": [
+            "Şanlıurfa",
+            "Gaziantep",
+            "Mardin",
+            "Diyarbakır"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Mevlana Müzesi hangi ilimizdedir?",
+        "options": [
+            "Konya",
+            "Ankara",
+            "Kayseri",
+            "Sivas"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Atatürk'ün doğduğu şehir hangisidir?",
+        "options": [
+            "Selanik",
+            "İstanbul",
+            "Ankara",
+            "Manastır"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Kurtuluş Savaşı'nın askeri safhasını sona erdiren antlaşma hangisidir?",
+        "options": [
+            "Mudanya Ateşkes Antlaşması",
+            "Lozan Antlaşması",
+            "Mondros Ateşkes Antlaşması",
+            "Sevr Antlaşması"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye Cumhuriyeti'nin bağımsızlığını uluslararası alanda tanıtan antlaşma hangisidir?",
+        "options": [
+            "Lozan Antlaşması",
+            "Sevr Antlaşması",
+            "Mondros Ateşkes Antlaşması",
+            "Ankara Antlaşması"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Saltanat hangi tarihte kaldırılmıştır?",
+        "options": [
+            "1 Kasım 1922",
+            "3 Mart 1924",
+            "29 Ekim 1923",
+            "23 Nisan 1920"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Halifelik hangi tarihte kaldırılmıştır?",
+        "options": [
+            "3 Mart 1924",
+            "1 Kasım 1922",
+            "29 Ekim 1923",
+            "23 Nisan 1920"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Misak-ı Milli kararları hangi mecliste kabul edilmiştir?",
+        "options": [
+            "Son Osmanlı Mebusan Meclisi",
+            "Birinci TBMM",
+            "Temsil Heyeti",
+            "Sivas Kongresi"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Amasya Genelgesi'nin en önemli özelliği nedir?",
+        "options": [
+            "Milli Mücadele'nin gerekçe ve yöntemini belirtmesi",
+            "Cumhuriyeti ilan etmesi",
+            "Saltanatı kaldırması",
+            "Lozan'ı imzalaması"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Sivas Kongresi'nde alınan önemli kararlardan biri hangisidir?",
+        "options": [
+            "Milli cemiyetlerin tek çatı altında birleştirilmesi",
+            "Halifeliğin kaldırılması",
+            "Soyadı Kanunu'nun kabulü",
+            "Cumhuriyetin ilanı"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Erzurum Kongresi'nde alınan önemli kararlardan biri hangisidir?",
+        "options": [
+            "Milli sınırlar içinde vatan bir bütündür",
+            "TBMM açılmıştır",
+            "Lozan imzalanmıştır",
+            "Saltanat kaldırılmıştır"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Cumhuriyetçilik ilkesi aşağıdakilerden hangisiyle doğrudan ilgilidir?",
+        "options": [
+            "Egemenliğin millete ait olması",
+            "Din ve devlet işlerinin ayrılması",
+            "Ekonomide devlet desteği",
+            "Çağdaşlaşma"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Laiklik ilkesi aşağıdakilerden hangisiyle ilgilidir?",
+        "options": [
+            "Din ve devlet işlerinin ayrılması",
+            "Halkın yönetime katılması",
+            "Milli ekonominin güçlenmesi",
+            "Sınıf ayrımının reddedilmesi"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Devletçilik ilkesi hangi alanla daha çok ilişkilidir?",
+        "options": [
+            "Ekonomi",
+            "Dil",
+            "Din",
+            "Askerlik"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Soyadı Kanunu hangi alanda yapılan bir inkılaptır?",
+        "options": [
+            "Toplumsal alan",
+            "Askeri alan",
+            "Ekonomik alan",
+            "Dış politika"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Kabotaj Kanunu hangi alanla ilgilidir?",
+        "options": [
+            "Denizcilik",
+            "Tarım",
+            "Eğitim",
+            "Sağlık"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'de yasama yetkisi hangi kuruma aittir?",
+        "options": [
+            "Türkiye Büyük Millet Meclisi",
+            "Cumhurbaşkanlığı",
+            "Anayasa Mahkemesi",
+            "Danıştay"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'de yürütme yetkisi kime aittir?",
+        "options": [
+            "Cumhurbaşkanı",
+            "TBMM Başkanı",
+            "Anayasa Mahkemesi",
+            "Yargıtay Başkanı"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Kanunların Anayasa'ya uygunluğunu denetleyen yüksek mahkeme hangisidir?",
+        "options": [
+            "Anayasa Mahkemesi",
+            "Yargıtay",
+            "Danıştay",
+            "Sayıştay"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'de idari davaların en üst inceleme mercii hangisidir?",
+        "options": [
+            "Danıştay",
+            "Yargıtay",
+            "Sayıştay",
+            "Uyuşmazlık Mahkemesi"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Adli davaların en üst inceleme mercii hangisidir?",
+        "options": [
+            "Yargıtay",
+            "Danıştay",
+            "Sayıştay",
+            "Anayasa Mahkemesi"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Devletin gelir ve giderlerini TBMM adına denetleyen kurum hangisidir?",
+        "options": [
+            "Sayıştay",
+            "Danıştay",
+            "Yargıtay",
+            "Valilik"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Seçme ve seçilme hakkı hangi hak grubuna girer?",
+        "options": [
+            "Siyasi haklar",
+            "Sosyal haklar",
+            "Ekonomik haklar",
+            "Kişisel haklar"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Anayasa'ya göre Türkiye Cumhuriyeti'nin yönetim şekli nedir?",
+        "options": [
+            "Cumhuriyet",
+            "Monarşi",
+            "Teokrasi",
+            "Oligarşi"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Aşağıdakilerden hangisi yerel yönetim birimidir?",
+        "options": [
+            "Belediye",
+            "Bakanlık",
+            "Yargıtay",
+            "Danıştay"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Vali aşağıdakilerden hangisinin temsilcisidir?",
+        "options": [
+            "Merkezi yönetim",
+            "Belediye",
+            "Mahalle yönetimi",
+            "Üniversite"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Muhtar hangi yönetim biriminde görev yapar?",
+        "options": [
+            "Mahalle veya köy",
+            "İl",
+            "Bakanlık",
+            "Büyükşehir belediyesi"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Birleşmiş Milletler'in temel amacı nedir?",
+        "options": [
+            "Uluslararası barış ve güvenliği korumak",
+            "Para basmak",
+            "Sadece ticareti düzenlemek",
+            "Yerel seçim yapmak"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "NATO'nun temel amacı nedir?",
+        "options": [
+            "Ortak savunma",
+            "Kültürel mirası koruma",
+            "Para politikası yürütme",
+            "Sağlık hizmeti verme"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "UNESCO daha çok hangi alanlarda faaliyet gösterir?",
+        "options": [
+            "Eğitim bilim ve kültür",
+            "Askeri savunma",
+            "Para politikası",
+            "Petrol üretimi"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Dünya Sağlık Örgütü'nün kısa adı hangisidir?",
+        "options": [
+            "WHO",
+            "NATO",
+            "UNESCO",
+            "IMF"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Uluslararası Para Fonu'nun kısa adı hangisidir?",
+        "options": [
+            "IMF",
+            "WHO",
+            "UNICEF",
+            "NATO"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "UNICEF hangi alanda faaliyet gösterir?",
+        "options": [
+            "Çocuk hakları ve yardımları",
+            "Askeri savunma",
+            "Petrol ticareti",
+            "Bankacılık"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Dünyanın en büyük okyanusu hangisidir?",
+        "options": [
+            "Pasifik Okyanusu",
+            "Atlas Okyanusu",
+            "Hint Okyanusu",
+            "Arktik Okyanusu"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Dünyanın en uzun nehri olarak genel kabul gören nehir hangisidir?",
+        "options": [
+            "Nil Nehri",
+            "Amazon Nehri",
+            "Yangtze Nehri",
+            "Mississippi Nehri"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Dünyanın en yüksek dağı hangisidir?",
+        "options": [
+            "Everest",
+            "K2",
+            "Kilimanjaro",
+            "Ağrı Dağı"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Dünyanın en büyük çölü hangisidir?",
+        "options": [
+            "Antarktika Çölü",
+            "Sahra Çölü",
+            "Gobi Çölü",
+            "Arabistan Çölü"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Dünyanın en büyük sıcak çölü hangisidir?",
+        "options": [
+            "Sahra Çölü",
+            "Gobi Çölü",
+            "Kalahari Çölü",
+            "Atacama Çölü"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Güneş Sistemi'nin en büyük gezegeni hangisidir?",
+        "options": [
+            "Jüpiter",
+            "Satürn",
+            "Dünya",
+            "Mars"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Güneş'e en yakın gezegen hangisidir?",
+        "options": [
+            "Merkür",
+            "Venüs",
+            "Dünya",
+            "Mars"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Kızıl Gezegen olarak bilinen gezegen hangisidir?",
+        "options": [
+            "Mars",
+            "Venüs",
+            "Jüpiter",
+            "Satürn"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Ay'a ilk ayak basan insan kimdir?",
+        "options": [
+            "Neil Armstrong",
+            "Yuri Gagarin",
+            "Buzz Aldrin",
+            "Alan Shepard"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Uzaya çıkan ilk insan kimdir?",
+        "options": [
+            "Yuri Gagarin",
+            "Neil Armstrong",
+            "Buzz Aldrin",
+            "John Glenn"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Nobel Kimya Ödülü alan Türk bilim insanı kimdir?",
+        "options": [
+            "Aziz Sancar",
+            "Cahit Arf",
+            "Oktay Sinanoğlu",
+            "Feza Gürsey"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Cahit Arf hangi bilim alanıyla tanınır?",
+        "options": [
+            "Matematik",
+            "Tıp",
+            "Edebiyat",
+            "Arkeoloji"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Orhan Pamuk hangi alanda Nobel Ödülü almıştır?",
+        "options": [
+            "Edebiyat",
+            "Kimya",
+            "Fizik",
+            "Barış"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Sefiller romanının yazarı kimdir?",
+        "options": [
+            "Victor Hugo",
+            "Dostoyevski",
+            "Tolstoy",
+            "Balzac"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Suç ve Ceza romanının yazarı kimdir?",
+        "options": [
+            "Dostoyevski",
+            "Tolstoy",
+            "Victor Hugo",
+            "Goethe"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "İnce Memed romanının yazarı kimdir?",
+        "options": [
+            "Yaşar Kemal",
+            "Orhan Kemal",
+            "Kemal Tahir",
+            "Sabahattin Ali"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Kürk Mantolu Madonna romanının yazarı kimdir?",
+        "options": [
+            "Sabahattin Ali",
+            "Yaşar Kemal",
+            "Reşat Nuri Güntekin",
+            "Halide Edip Adıvar"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Çalıkuşu romanının yazarı kimdir?",
+        "options": [
+            "Reşat Nuri Güntekin",
+            "Yakup Kadri Karaosmanoğlu",
+            "Halide Edip Adıvar",
+            "Peyami Safa"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Nutuk adlı eser kime aittir?",
+        "options": [
+            "Mustafa Kemal Atatürk",
+            "İsmet İnönü",
+            "Ziya Gökalp",
+            "Mehmet Akif Ersoy"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Safahat adlı eser kime aittir?",
+        "options": [
+            "Mehmet Akif Ersoy",
+            "Namık Kemal",
+            "Tevfik Fikret",
+            "Yahya Kemal Beyatlı"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Divan edebiyatında gazel türü daha çok hangi konuyu işler?",
+        "options": [
+            "Aşk ve güzellik",
+            "Savaş tarihi",
+            "Bilimsel deney",
+            "Coğrafi keşif"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Dede Korkut Hikayeleri hangi kültüre aittir?",
+        "options": [
+            "Türk kültürü",
+            "Yunan kültürü",
+            "Roma kültürü",
+            "Mısır kültürü"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türk edebiyatında ilk psikolojik roman kabul edilen eser hangisidir?",
+        "options": [
+            "Eylül",
+            "İntibah",
+            "Araba Sevdası",
+            "Aşk-ı Memnu"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türk edebiyatında ilk edebi roman kabul edilen eser hangisidir?",
+        "options": [
+            "İntibah",
+            "Taaşşuk-ı Talat ve Fitnat",
+            "Eylül",
+            "Mai ve Siyah"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Osmanlı Devleti'nin kurucusu kimdir?",
+        "options": [
+            "Osman Bey",
+            "Orhan Bey",
+            "Ertuğrul Gazi",
+            "Yıldırım Bayezid"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Osmanlı Devleti'nin ilk başkenti neresidir?",
+        "options": [
+            "Söğüt",
+            "Bursa",
+            "Edirne",
+            "İstanbul"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Osmanlı Devleti'nde ilk düzenli ordu hangi padişah döneminde kurulmuştur?",
+        "options": [
+            "Orhan Bey",
+            "Osman Bey",
+            "I. Murad",
+            "Fatih Sultan Mehmet"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "İstanbul'u fetheden Osmanlı padişahı kimdir?",
+        "options": [
+            "Fatih Sultan Mehmet",
+            "Yavuz Sultan Selim",
+            "Kanuni Sultan Süleyman",
+            "II. Bayezid"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "İstanbul'un fethi hangi yılda gerçekleşmiştir?",
+        "options": [
+            "1453",
+            "1071",
+            "1299",
+            "1517"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Malazgirt Savaşı hangi yılda yapılmıştır?",
+        "options": [
+            "1071",
+            "1453",
+            "1299",
+            "1922"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Malazgirt Savaşı hangi hükümdar döneminde kazanılmıştır?",
+        "options": [
+            "Alparslan",
+            "Melikşah",
+            "Osman Bey",
+            "Fatih Sultan Mehmet"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Anadolu Selçuklu Devleti'nin başkenti neresidir?",
+        "options": [
+            "Konya",
+            "Sivas",
+            "Kayseri",
+            "Erzurum"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Talas Savaşı'nın Türk tarihi açısından en önemli sonucu nedir?",
+        "options": [
+            "Türklerin İslamiyet'i tanıma sürecinin hızlanması",
+            "İstanbul'un fethedilmesi",
+            "Osmanlı'nın kurulması",
+            "Cumhuriyetin ilan edilmesi"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Kavimler Göçü'nün başlamasında etkili olan Türk topluluğu hangisidir?",
+        "options": [
+            "Hunlar",
+            "Göktürkler",
+            "Uygurlar",
+            "Kıpçaklar"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türk adını devlet adı olarak kullanan ilk Türk devleti hangisidir?",
+        "options": [
+            "Göktürkler",
+            "Hunlar",
+            "Uygurlar",
+            "Avarlar"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Yerleşik hayata geçen ilk Türk devleti hangisidir?",
+        "options": [
+            "Uygurlar",
+            "Hunlar",
+            "Göktürkler",
+            "Avarlar"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Orhun Yazıtları hangi Türk devletine aittir?",
+        "options": [
+            "Göktürkler",
+            "Uygurlar",
+            "Hunlar",
+            "Karahanlılar"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türklerin İslamiyet'i kabul eden ilk büyük Türk devleti hangisidir?",
+        "options": [
+            "Karahanlılar",
+            "Gazneliler",
+            "Büyük Selçuklular",
+            "Osmanlılar"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türkiye'nin en uzun kara sınırı hangi ülke iledir?",
+        "options": [
+            "Suriye",
+            "İran",
+            "Irak",
+            "Yunanistan"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin en kısa kara sınırı hangi ülke iledir?",
+        "options": [
+            "Nahçıvan",
+            "Gürcistan",
+            "Ermenistan",
+            "Yunanistan"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'nin üç tarafı hangi denizlerle çevrilidir?",
+        "options": [
+            "Karadeniz Ege Akdeniz",
+            "Marmara Hazar Kızıldeniz",
+            "Ege Hazar Akdeniz",
+            "Karadeniz Marmara Hazar"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Karadeniz ikliminin en belirgin özelliği nedir?",
+        "options": [
+            "Her mevsim yağışlı olması",
+            "Yazların çok kurak geçmesi",
+            "Kışların aşırı sıcak olması",
+            "Çöl bitki örtüsünün görülmesi"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Akdeniz ikliminin doğal bitki örtüsü hangisidir?",
+        "options": [
+            "Maki",
+            "Bozkır",
+            "Tundra",
+            "Tayga"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "İç Anadolu Bölgesi'nin yaygın bitki örtüsü hangisidir?",
+        "options": [
+            "Bozkır",
+            "Maki",
+            "Orman",
+            "Tundra"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'de çay tarımı en çok hangi bölgede yapılır?",
+        "options": [
+            "Doğu Karadeniz",
+            "İç Anadolu",
+            "Güneydoğu Anadolu",
+            "Marmara"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'de fındık üretimi en çok hangi bölgede yapılır?",
+        "options": [
+            "Karadeniz Bölgesi",
+            "Ege Bölgesi",
+            "Akdeniz Bölgesi",
+            "İç Anadolu Bölgesi"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'de zeytin üretimi en çok hangi bölgede yaygındır?",
+        "options": [
+            "Ege Bölgesi",
+            "Doğu Anadolu Bölgesi",
+            "İç Anadolu Bölgesi",
+            "Karadeniz Bölgesi"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "GAP Projesi hangi bölgeyi geliştirmeyi amaçlar?",
+        "options": [
+            "Güneydoğu Anadolu Bölgesi",
+            "Karadeniz Bölgesi",
+            "Ege Bölgesi",
+            "Marmara Bölgesi"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye'de deprem riskinin yüksek olmasının temel nedeni nedir?",
+        "options": [
+            "Aktif fay hatları üzerinde yer alması",
+            "Ekvatora yakın olması",
+            "Denizlerle çevrili olması",
+            "Ormanların fazla olması"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Aşağıdakilerden hangisi doğal afet değildir?",
+        "options": [
+            "Trafik kazası",
+            "Deprem",
+            "Sel",
+            "Heyelan"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Heyelan en çok hangi bölgemizde görülür?",
+        "options": [
+            "Karadeniz Bölgesi",
+            "İç Anadolu Bölgesi",
+            "Güneydoğu Anadolu Bölgesi",
+            "Ege Bölgesi"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Çığ olayları Türkiye'de daha çok hangi bölgede görülür?",
+        "options": [
+            "Doğu Anadolu Bölgesi",
+            "Marmara Bölgesi",
+            "Ege Bölgesi",
+            "Akdeniz Bölgesi"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Dünyanın en kalabalık ülkesi uzun süre hangi ülke olarak bilinmiştir?",
+        "options": [
+            "Çin",
+            "Kanada",
+            "Avustralya",
+            "Mısır"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Yüz ölçümü bakımından dünyanın en büyük ülkesi hangisidir?",
+        "options": [
+            "Rusya",
+            "Kanada",
+            "Çin",
+            "ABD"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Avrupa'nın en uzun nehri hangisidir?",
+        "options": [
+            "Volga",
+            "Tuna",
+            "Ren",
+            "Seine"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Afrika kıtasının en yüksek dağı hangisidir?",
+        "options": [
+            "Kilimanjaro",
+            "Everest",
+            "Atlas Dağları",
+            "Fuji"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Mısır piramitleri hangi şehir yakınlarında bulunur?",
+        "options": [
+            "Kahire",
+            "İskenderiye",
+            "Luksor",
+            "Asvan"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Eyfel Kulesi hangi şehirde bulunur?",
+        "options": [
+            "Paris",
+            "Roma",
+            "Berlin",
+            "Madrid"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Kolezyum hangi şehirde bulunur?",
+        "options": [
+            "Roma",
+            "Atina",
+            "Paris",
+            "Londra"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Tac Mahal hangi ülkededir?",
+        "options": [
+            "Hindistan",
+            "Pakistan",
+            "İran",
+            "Mısır"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Machu Picchu hangi ülkededir?",
+        "options": [
+            "Peru",
+            "Brezilya",
+            "Şili",
+            "Arjantin"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Özgürlük Heykeli hangi şehirde bulunur?",
+        "options": [
+            "New York",
+            "Washington",
+            "Boston",
+            "Chicago"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Pisa Kulesi hangi ülkededir?",
+        "options": [
+            "İtalya",
+            "Fransa",
+            "İspanya",
+            "Yunanistan"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Dünyanın yedi harikasından günümüze ulaşan tek yapı hangisidir?",
+        "options": [
+            "Keops Piramidi",
+            "Babil'in Asma Bahçeleri",
+            "Rodos Heykeli",
+            "Artemis Tapınağı"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "İnsan vücudundaki en büyük organ hangisidir?",
+        "options": [
+            "Deri",
+            "Karaciğer",
+            "Kalp",
+            "Akciğer"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "İnsan vücudunda kanı pompalayan organ hangisidir?",
+        "options": [
+            "Kalp",
+            "Akciğer",
+            "Mide",
+            "Böbrek"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Fotosentez yapan canlılarda genellikle hangi pigment bulunur?",
+        "options": [
+            "Klorofil",
+            "Hemoglobin",
+            "Keratin",
+            "Melanin"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Suyun kimyasal formülü nedir?",
+        "options": [
+            "H2O",
+            "CO2",
+            "O2",
+            "NaCl"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Sofra tuzunun kimyasal adı nedir?",
+        "options": [
+            "Sodyum klorür",
+            "Kalsiyum karbonat",
+            "Potasyum nitrat",
+            "Magnezyum sülfat"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Dünya'nın uydusu hangisidir?",
+        "options": [
+            "Ay",
+            "Mars",
+            "Venüs",
+            "Jüpiter"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Dünya'nın kendi ekseni etrafındaki dönüş süresi yaklaşık ne kadardır?",
+        "options": [
+            "24 saat",
+            "7 gün",
+            "30 gün",
+            "365 gün"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Dünya'nın Güneş etrafındaki dolanma süresi yaklaşık ne kadardır?",
+        "options": [
+            "365 gün 6 saat",
+            "24 saat",
+            "30 gün",
+            "12 saat"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Mevsimlerin oluşmasının temel nedeni nedir?",
+        "options": [
+            "Dünya'nın eksen eğikliği ve Güneş etrafındaki hareketi",
+            "Ay'ın Dünya etrafında dönmesi",
+            "Dünya'nın düz olması",
+            "Bulutların hareketi"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Ses boşlukta yayılır mı?",
+        "options": [
+            "Hayır",
+            "Evet",
+            "Sadece gündüz yayılır",
+            "Sadece sıcak havada yayılır"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Işık yılı neyin birimidir?",
+        "options": [
+            "Uzunluk",
+            "Zaman",
+            "Kütle",
+            "Sıcaklık"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Aşağıdaki renklerden hangisi ana renklerden biridir?",
+        "options": [
+            "Kırmızı",
+            "Turuncu",
+            "Mor",
+            "Pembe"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin para birimi nedir?",
+        "options": [
+            "Türk lirası",
+            "Euro",
+            "Dolar",
+            "Sterlin"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Avrupa Birliği'nin ortak para birimi hangisidir?",
+        "options": [
+            "Euro",
+            "Dolar",
+            "Frank",
+            "Sterlin"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Satrançta şahı tehdit eden hamleye ne denir?",
+        "options": [
+            "Şah",
+            "Mat",
+            "Rok",
+            "Piyon"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Satrançta oyun hangi taşların hareketiyle başlar?",
+        "options": [
+            "Beyaz taşlar",
+            "Siyah taşlar",
+            "Vezir",
+            "Şah"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Olimpiyat oyunlarının simgesinde kaç halka vardır?",
+        "options": [
+            "5",
+            "4",
+            "6",
+            "7"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Futbolda bir takım sahada kaç oyuncuyla oynar?",
+        "options": [
+            "11",
+            "10",
+            "9",
+            "12"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Basketbolda bir takım sahada kaç oyuncuyla oynar?",
+        "options": [
+            "5",
+            "6",
+            "7",
+            "11"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Voleybolda bir takım sahada kaç oyuncuyla oynar?",
+        "options": [
+            "6",
+            "5",
+            "7",
+            "11"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye'nin ilk kadın savaş pilotu kimdir?",
+        "options": [
+            "Sabiha Gökçen",
+            "Halide Edip Adıvar",
+            "Afet İnan",
+            "Nene Hatun"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Nene Hatun hangi savaşla özdeşleşmiştir?",
+        "options": [
+            "93 Harbi",
+            "Trablusgarp Savaşı",
+            "Kurtuluş Savaşı",
+            "Çanakkale Savaşı"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Çanakkale Savaşı hangi savaşın cephelerinden biridir?",
+        "options": [
+            "I. Dünya Savaşı",
+            "Kurtuluş Savaşı",
+            "II. Dünya Savaşı",
+            "Balkan Savaşları"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Türkiye Cumhuriyeti'nin ilk cumhurbaşkanı kimdir?",
+        "options": [
+            "Mustafa Kemal Atatürk",
+            "İsmet İnönü",
+            "Celal Bayar",
+            "Cemal Gürsel"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Türkiye Cumhuriyeti'nin ikinci cumhurbaşkanı kimdir?",
+        "options": [
+            "İsmet İnönü",
+            "Mustafa Kemal Atatürk",
+            "Celal Bayar",
+            "Adnan Menderes"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Lozan Antlaşması hangi yıl imzalanmıştır?",
+        "options": [
+            "1923",
+            "1920",
+            "1922",
+            "1924"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Montrö Boğazlar Sözleşmesi hangi konuda Türkiye'ye önemli haklar sağlamıştır?",
+        "options": [
+            "Boğazlar üzerindeki egemenlik",
+            "Kara sınırları",
+            "Eğitim sistemi",
+            "Para politikası"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Hatay hangi yıl Türkiye'ye katılmıştır?",
+        "options": [
+            "1939",
+            "1923",
+            "1936",
+            "1945"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türkiye'nin ilk kadın milletvekilleri hangi dönemde meclise girmiştir?",
+        "options": [
+            "1935 seçimleri",
+            "1920 seçimleri",
+            "1923 seçimleri",
+            "1950 seçimleri"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Kadınlara belediye seçimlerine katılma hakkı Türkiye'de hangi yıl verilmiştir?",
+        "options": [
+            "1930",
+            "1923",
+            "1934",
+            "1938"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Kadınlara milletvekili seçme ve seçilme hakkı Türkiye'de hangi yıl verilmiştir?",
+        "options": [
+            "1934",
+            "1926",
+            "1930",
+            "1945"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türk Medeni Kanunu hangi ülkeden örnek alınarak hazırlanmıştır?",
+        "options": [
+            "İsviçre",
+            "Fransa",
+            "Almanya",
+            "İtalya"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türk Ceza Kanunu hazırlanırken hangi ülke örnek alınmıştır?",
+        "options": [
+            "İtalya",
+            "İsviçre",
+            "Almanya",
+            "İngiltere"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türk Dil Kurumu hangi yıl kurulmuştur?",
+        "options": [
+            "1932",
+            "1931",
+            "1928",
+            "1935"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türk Tarih Kurumu hangi yıl kurulmuştur?",
+        "options": [
+            "1931",
+            "1932",
+            "1928",
+            "1935"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Türkiye'de Engelliler Haftası hangi tarihler arasında kutlanır?",
+        "options": [
+            "10-16 Mayıs",
+            "1-7 Mart",
+            "3-9 Aralık",
+            "19-25 Mayıs"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "3 Aralık dünyada hangi özel gün olarak kabul edilir?",
+        "options": [
+            "Dünya Engelliler Günü",
+            "Dünya Çevre Günü",
+            "Dünya Sağlık Günü",
+            "Dünya Çocuk Günü"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Engelli bireylerin toplumsal yaşama eşit katılımını sağlamak için en önemli kavram hangisidir?",
+        "options": [
+            "Erişilebilirlik",
+            "Ayrımcılık",
+            "İzolasyon",
+            "Kısıtlama"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Görme engelli bireylerin okuma yazma için kullandığı kabartmalı alfabe hangisidir?",
+        "options": [
+            "Braille alfabesi",
+            "Latin alfabesi",
+            "Mors alfabesi",
+            "Kiril alfabesi"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "İşitme engelli bireylerin iletişimde sıkça kullandığı yöntem hangisidir?",
+        "options": [
+            "İşaret dili",
+            "Mors kodu",
+            "Telgraf",
+            "Şifreli yazı"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Tekerlekli sandalye kullanan bireyler için binalarda bulunması gereken temel erişilebilirlik uygulaması hangisidir?",
+        "options": [
+            "Rampa",
+            "Turnike",
+            "Merdiven",
+            "Döner kapı"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Engelli bireylerin eğitim hakkından eşit şekilde yararlanabilmesi hangi anlayışla ilişkilidir?",
+        "options": [
+            "Kapsayıcı eğitim",
+            "Ezbere eğitim",
+            "Uzaktan yasaklama",
+            "Sınırlandırılmış eğitim"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Aşağıdakilerden hangisi engelli bireylere yönelik doğru bir toplumsal yaklaşımdır?",
+        "options": [
+            "Bireyin ihtiyaçlarına saygı duymak",
+            "Acıyarak yaklaşmak",
+            "Yok saymak",
+            "Kararlarını onun yerine almak"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Erişilebilir toplu taşıma araçlarında aşağıdakilerden hangisi bulunmalıdır?",
+        "options": [
+            "Engelli rampası veya asansör sistemi",
+            "Sadece yüksek basamak",
+            "Dar giriş kapısı",
+            "Tutunma yeri olmayan alan"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Engelli bireylerin bağımsız yaşamını destekleyen en önemli unsurlardan biri hangisidir?",
+        "options": [
+            "Erişilebilir çevre düzenlemesi",
+            "Toplumdan uzaklaştırma",
+            "Hakların sınırlandırılması",
+            "Sadece yardım bekleme"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Braille alfabesi en çok hangi engel grubundaki bireyler tarafından kullanılır?",
+        "options": [
+            "Görme engelliler",
+            "İşitme engelliler",
+            "Bedensel engelliler",
+            "Ortopedik engelliler"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Engelli bireylere yönelik ayrımcılığın önlenmesi hangi temel insan hakkıyla doğrudan ilgilidir?",
+        "options": [
+            "Eşitlik hakkı",
+            "Sadece mülkiyet hakkı",
+            "Vergi hakkı",
+            "Ticaret hakkı"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Görme engelli bireylerin kaldırımlarda yön bulmasını kolaylaştıran özel yüzeylere ne ad verilir?",
+        "options": [
+            "Hissedilebilir yüzey",
+            "Kaygan yüzey",
+            "Süsleme taşı",
+            "Dekoratif zemin"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Engelli bireylerin sosyal hayata katılımını artırmak için aşağıdakilerden hangisi yapılmalıdır?",
+        "options": [
+            "Fiziksel ve sosyal engeller azaltılmalıdır",
+            "Etkinliklere alınmamalıdır",
+            "Karar süreçlerinden uzak tutulmalıdır",
+            "Toplumdan ayrılmalıdır"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Aşağıdakilerden hangisi engelliliğe neden olabilecek çevresel faktörlerden biridir?",
+        "options": [
+            "Erişilebilir olmayan şehir düzeni",
+            "Kapsayıcı eğitim",
+            "Rampa yapılması",
+            "İşaret dili desteği"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "Engellilik konusunda modern yaklaşım bireyi değil daha çok neyi değiştirmeyi hedefler?",
+        "options": [
+            "Toplumsal ve çevresel engelleri",
+            "Bireyin kimliğini",
+            "Bireyin haklarını",
+            "Bireyin eğitim hakkını"
+        ],
+        "correct": 0,
+        "difficulty": "zor"
+    },
+    {
+        "text": "İşaret dili çevirmeni en çok hangi durumda erişilebilirliği artırır?",
+        "options": [
+            "İşitme engelli bireylerin bilgiye erişiminde",
+            "Yol yapımında",
+            "Elektrik üretiminde",
+            "Spor sahası çiziminde"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    },
+    {
+        "text": "Engelli bireylere yönelik farkındalık çalışmalarının temel amacı nedir?",
+        "options": [
+            "Toplumda eşitlik ve duyarlılık oluşturmak",
+            "Engelli bireyleri toplumdan ayırmak",
+            "Sadece yardım toplamak",
+            "Hakları sınırlandırmak"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Aşağıdakilerden hangisi erişilebilirlik örneğidir?",
+        "options": [
+            "Sesli trafik lambası",
+            "Yüksek kaldırım",
+            "Dar kapı",
+            "Sadece merdivenli giriş"
+        ],
+        "correct": 0,
+        "difficulty": "kolay"
+    },
+    {
+        "text": "Engelli bireylerin kamusal hizmetlerden yararlanmasında temel ilke ne olmalıdır?",
+        "options": [
+            "Eşit ve erişilebilir hizmet",
+            "Ayrı tutma",
+            "Kısıtlama",
+            "Görmezden gelme"
+        ],
+        "correct": 0,
+        "difficulty": "orta"
+    }
+]

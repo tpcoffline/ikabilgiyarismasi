@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İKA Kulübü Bilgi Yarışması</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="logo-container" class="logo-center">
+        <img src="assets/logo.png" alt="İKA Logo" id="game-logo" onclick="returnToMainMenu()" title="Ana Menüye Dön">
+    </div>
+
+    <div class="game-container">
+        <div id="puzzle-container" class="hidden">
+            <div class="puzzle-piece piece-1"></div>
+            <div class="puzzle-piece piece-2"></div>
+            <div class="puzzle-piece piece-3"></div>
+            <div class="puzzle-piece piece-4"></div>
+            <div class="puzzle-piece piece-5"></div>
+        </div>
+
+        <!-- Timer Bar -->
+        <div id="timer-bar-container" class="hidden">
+            <div id="timer-bar"></div>
+            <span id="timer-text">0.0s</span>
+        </div>
+
+        <div id="quiz-area" class="hidden">
+            <div id="difficulty-badge" class="difficulty-badge"></div>
+            <h2 id="question-text">Soru buraya gelecek...</h2>
+            <div id="options-container">
+                <button class="option-btn" data-index="0">A</button>
+                <button class="option-btn" data-index="1">B</button>
+                <button class="option-btn" data-index="2">C</button>
+                <button class="option-btn" data-index="3">D</button>
+            </div>
+        </div>
+
+        <div id="win-screen" class="hidden">
+            <h1>TEBRİKLER!</h1>
+            <p>Aracı başarıyla tamamladın.</p>
+            <div id="win-score-display" class="score-display"></div>
+            <div id="win-name-section" class="name-entry-section">
+                <p class="name-prompt">İsmini girerek sıralamaya kaydol!</p>
+                <input type="text" id="win-name-input" placeholder="İsmini yaz..." maxlength="20">
+                <div class="action-buttons">
+                    <button onclick="saveScore(true)"><i class="fas fa-check"></i> Tamam</button>
+                    <button class="menu-btn" onclick="saveScore(false)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
+                </div>
+                <div class="action-buttons" style="margin-top:10px;">
+                    <button class="menu-btn" onclick="skipAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="lose-screen" class="hidden">
+            <h1>MAALESEF!</h1>
+            <p>Yanlış cevap verdin. Aracın bağlantısı koptu.</p>
+            <div id="lose-score-display" class="score-display"></div>
+            <div id="lose-name-section" class="name-entry-section">
+                <p class="name-prompt">Yine de skorunu kaydetmek ister misin?</p>
+                <input type="text" id="lose-name-input" placeholder="İsmini yaz..." maxlength="20">
+                <div class="action-buttons">
+                    <button onclick="saveScoreLose(true)"><i class="fas fa-check"></i> Tamam</button>
+                    <button class="menu-btn" onclick="saveScoreLose(false)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
+                </div>
+                <div class="action-buttons" style="margin-top:10px;">
+                    <button class="menu-btn" onclick="skipAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard & Start Button -->
+    <div id="main-menu-area">
+        <button id="start-btn" onclick="startAnimation()">Yarışmaya Başla</button>
+        <div id="leaderboard-section">
+            <h3><i class="fas fa-trophy"></i> Sıralama Tablosu</h3>
+            <div id="leaderboard-list"></div>
+        </div>
+    </div>
+
+    <div id="admin-trigger" onclick="checkAdminPassword()" title="Yönetim">
+        <i class="fas fa-cogs"></i>
+    </div>
+
+    <div id="admin-modal" class="hidden">
+        <div class="admin-content">
+            <div class="admin-header">
+                <h2><i class="fas fa-server"></i> İKA Soru Merkezi</h2>
+                <span class="close-btn" onclick="closeAdmin()">&times;</span>
+            </div>
+            
+            <div class="admin-body">
+                <!-- Sol Kolon: Ayarlar + Soru Ekle -->
+                <div class="admin-left-col">
+                    <!-- Yarışma Ayarları -->
+                    <div class="admin-panel-section settings-section">
+                        <h3><i class="fas fa-sliders-h"></i> Yarışma Ayarları</h3>
+                        
+                        <div class="form-group">
+                            <label>Toplam Soru Sayısı</label>
+                            <input type="number" id="settings-question-count" min="1" max="20" value="5">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Zorluk Dağılımı</label>
+                            <div class="difficulty-distribution" id="difficulty-distribution">
+                                <!-- JS tarafından doldurulacak -->
+                            </div>
+                        </div>
+
+                        <button class="save-btn settings-save-btn" onclick="saveSettings()"><i class="fas fa-cog"></i> Ayarları Kaydet</button>
+                    </div>
+
+                    <!-- Soru Ekleme Formu -->
+                    <div class="admin-panel-section form-section">
+                        <h3><i class="fas fa-plus-circle"></i> Yeni Soru Ekle</h3>
+                        
+                        <div class="form-group">
+                            <label>Soru Metni</label>
+                            <textarea id="new-q-text" rows="3" placeholder="Örn: Otonom araçlarda engellerden kaçınmak için..."></textarea>
+                        </div>
+
+                        <div class="options-grid">
+                            <div class="form-group">
+                                <label>A Şıkkı</label>
+                                <input type="text" id="opt-0" placeholder="A seçeneği">
+                            </div>
+                            <div class="form-group">
+                                <label>B Şıkkı</label>
+                                <input type="text" id="opt-1" placeholder="B seçeneği">
+                            </div>
+                            <div class="form-group">
+                                <label>C Şıkkı</label>
+                                <input type="text" id="opt-2" placeholder="C seçeneği">
+                            </div>
+                            <div class="form-group">
+                                <label>D Şıkkı</label>
+                                <input type="text" id="opt-3" placeholder="D seçeneği">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Doğru Cevap Hangisi?</label>
+                            <select id="correct-opt">
+                                <option value="0">A Şıkkı Doğru</option>
+                                <option value="1">B Şıkkı Doğru</option>
+                                <option value="2">C Şıkkı Doğru</option>
+                                <option value="3">D Şıkkı Doğru</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Zorluk Seviyesi</label>
+                            <select id="difficulty-opt">
+                                <option value="kolay">🟢 Kolay</option>
+                                <option value="orta">🟡 Orta</option>
+                                <option value="zor">🔴 Zor</option>
+                            </select>
+                        </div>
+
+                        <button class="save-btn" onclick="addQuestion()"><i class="fas fa-save"></i> Soruyu Veritabanına Ekle</button>
+                    </div>
+                </div>
+
+                <!-- Sağ Kolon: Mevcut Sorular + Sıralama -->
+                <div class="admin-right-col">
+                    <div class="admin-panel-section list-section">
+                        <h3><i class="fas fa-database"></i> Mevcut Sorular (<span id="q-count">0</span>)</h3>
+                        <div class="difficulty-filter">
+                            <button class="filter-btn active" data-filter="all" onclick="filterQuestions('all', this)">Tümü</button>
+                            <button class="filter-btn" data-filter="kolay" onclick="filterQuestions('kolay', this)">🟢 Kolay</button>
+                            <button class="filter-btn" data-filter="orta" onclick="filterQuestions('orta', this)">🟡 Orta</button>
+                            <button class="filter-btn" data-filter="zor" onclick="filterQuestions('zor', this)">🔴 Zor</button>
+                        </div>
+                        <div id="questions-list"></div>
+                        <div class="json-actions">
+                            <button class="json-btn export-btn" onclick="exportQuestions()" title="Soruları questions.js olarak indir"><i class="fas fa-download"></i> Dışa Aktar</button>
+                            <button class="json-btn reset-btn" onclick="reloadFromFile()" title="questions.js dosyasından yeniden yükle (sayfayı yenilemeden)"><i class="fas fa-sync-alt"></i> Dosyadan Yenile</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-panel-section leaderboard-admin-section">
+                        <h3><i class="fas fa-trophy"></i> Sıralama Yönetimi</h3>
+                        <div id="admin-leaderboard-list"></div>
+                        <button class="save-btn clear-lb-btn" onclick="clearLeaderboard()"><i class="fas fa-trash"></i> Sıralamayı Temizle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
