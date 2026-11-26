@@ -30,6 +30,7 @@ window.RaceGame = (function () {
         laserDuration: 12,
         quizTimeBonus: 5,
         speedScale: 1.0,     // 0.60 .. 1.50
+        padSpeedScale: 1.0,  // 0.60 .. 1.80 (Speed Pad boost speed multiplier)
         aimAssist: 'medium', // 'off' | 'low' | 'medium' | 'high'
         autoDrive: false,    // false = full manual car control (default!)
         droneSpeedMult: 1.0, // slow: 0.68, normal: 1.0, fast: 1.38
@@ -1334,7 +1335,7 @@ window.RaceGame = (function () {
             speed = Math.max(0, speed - 90 * dt);
         } else if (turboTimer > 0) {
             turboTimer -= dt;
-            speed = THREE.MathUtils.lerp(speed, 84 * sp, Math.min(1, dt * 6));
+            speed = THREE.MathUtils.lerp(speed, 84 * sp * (config.padSpeedScale || 1.0), Math.min(1, dt * 6));
         } else if (config.autoDrive) {
             // Optional easy auto-cruise mode (off by default)
             let targetSpeed = baseCruiseSpeed * sp;
@@ -1732,6 +1733,7 @@ window.RaceGame = (function () {
         config.laserDuration = Number(raceSettings.laserDuration) || 12;
         config.quizTimeBonus = Number(raceSettings.quizTimeBonus) || 5;
         config.speedScale = Math.max(0.6, Math.min(1.5, (Number(raceSettings.speedPercent) || 100) / 100));
+        config.padSpeedScale = Math.max(0.6, Math.min(1.8, (Number(raceSettings.padSpeedPercent) || 100) / 100));
         config.aimAssist = AIM_ASSIST_PROFILES[raceSettings.aimAssist] ? raceSettings.aimAssist : 'medium';
         config.autoDrive = raceSettings.autoDrive === true;
         config.droneSpeedMult = droneSpeedMap[raceSettings.droneSpeed] || 1.0;
@@ -1902,11 +1904,18 @@ window.RaceGame = (function () {
         showcaseActive = !!val;
     }
 
+    function setRoundAimAssist(level) {
+        if (!isRunning || !AIM_ASSIST_PROFILES[level]) return false;
+        config.aimAssist = level;
+        return true;
+    }
+
     return {
         start,
         stop,
         togglePause,
         toggleCamera,
+        setRoundAimAssist,
         initShowcase,
         setShowcaseActive,
         isRunning: () => isRunning

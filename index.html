@@ -438,6 +438,14 @@
                             <input type="range" id="race-set-speed" class="admin-range" min="60" max="150" step="5" value="100" oninput="updateRaceSpeedLabel(this.value)">
                         </div>
 
+                        <div class="form-group">
+                            <label class="range-label-row">
+                                <span><i class="fas fa-bolt"></i> Speed Pad Hızı</span>
+                                <strong id="race-set-pad-speed-val" class="range-val-badge">%100 (Normal)</strong>
+                            </label>
+                            <input type="range" id="race-set-pad-speed" class="admin-range" min="60" max="180" step="5" value="100" oninput="updatePadSpeedLabel(this.value)">
+                        </div>
+
                         <div class="admin-two-col">
                             <div class="form-group">
                                 <label><i class="fas fa-crosshairs"></i> Lazer Aim-Assist Seviyesi</label>
@@ -455,6 +463,14 @@
                                     <option value="true">Otomatik Gaz (Kolay)</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-gamepad"></i> Sağ Analog Özellikleri (R3 Yeniden Başlat &amp; Hile)</label>
+                            <select id="race-set-right-stick">
+                                <option value="true" selected>Açık</option>
+                                <option value="false">Kapalı</option>
+                            </select>
                         </div>
 
                         <div class="admin-two-col">

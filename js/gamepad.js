@@ -29,6 +29,9 @@ window.InputManager = (function () {
     // Previous gamepad button state for edge detection
     let prevButtons = [];
     let prevAxisDir = { x: 0, y: 0 };
+    let prevRightStickDir = null;
+    let rightStickSeq = [];
+    let lastRightStickTime = 0;
     let listeners = [];
 
     // Continuous polled state
@@ -371,6 +374,34 @@ window.InputManager = (function () {
 
             // R3 (11, Right Analog Stick Click) -> Instant Quick Restart!
             if (justPressed(11)) emitAction('restart');
+
+            // Right Analog Stick Secret Cheat Sequence: Yukarı, Yukarı, Aşağı, Sağ, Sol (U, U, D, R, L)
+            const rawRx = gp.axes[2] || 0;
+            const rawRy = gp.axes[3] || 0;
+            let rDir = null;
+            if (Math.abs(rawRy) > Math.abs(rawRx)) {
+                if (rawRy < -0.62) rDir = 'U';
+                else if (rawRy > 0.62) rDir = 'D';
+            } else {
+                if (rawRx < -0.62) rDir = 'L';
+                else if (rawRx > 0.62) rDir = 'R';
+            }
+            if (rDir && rDir !== prevRightStickDir) {
+                const nowMs = Date.now();
+                if (nowMs - lastRightStickTime > 4000) rightStickSeq = [];
+                lastRightStickTime = nowMs;
+                rightStickSeq.push(rDir);
+                if (rightStickSeq.length > 5) rightStickSeq.shift();
+                if (rightStickSeq.join(',') === 'U,U,D,R,L') {
+                    rightStickSeq = [];
+                    emitAction('cheatAimAssist');
+                }
+            }
+            if (Math.hypot(rawRx, rawRy) < 0.32) {
+                prevRightStickDir = null;
+            } else if (rDir) {
+                prevRightStickDir = rDir;
+            }
 
             // Menu navigation (D-Pad or Stick flick)
             const curDirX = dLeft || lx < -0.55 ? -1 : (dRight || lx > 0.55 ? 1 : 0);

@@ -45,8 +45,10 @@
         laserDuration: 12,
         quizTimeBonus: 5,
         speedPercent: 100,
+        padSpeedPercent: 100,
         aimAssist: 'medium',
         autoDrive: false,
+        rightStickFeatures: true,
         droneSpeed: 'normal',
         obstacleDensity: 'normal',
         bilgiQuestionTime: 15
@@ -680,6 +682,13 @@
         if (el) el.textContent = `%${num} (${tag})`;
     };
 
+    window.updatePadSpeedLabel = function (val) {
+        const num = parseInt(val, 10) || 100;
+        const tag = num < 85 ? 'Yavaş' : num <= 110 ? 'Normal' : num <= 140 ? 'Hızlı' : 'Roket';
+        const el = document.getElementById('race-set-pad-speed-val');
+        if (el) el.textContent = `%${num} (${tag})`;
+    };
+
     function loadSettingsUI() {
         // Quiz settings
         document.getElementById('settings-question-count').value = quizSettings.questionCount;
@@ -693,8 +702,11 @@
         document.getElementById('race-set-quiz-bonus').value = raceSettings.quizTimeBonus;
         document.getElementById('race-set-speed').value = raceSettings.speedPercent || 100;
         updateRaceSpeedLabel(raceSettings.speedPercent || 100);
+        document.getElementById('race-set-pad-speed').value = raceSettings.padSpeedPercent || 100;
+        updatePadSpeedLabel(raceSettings.padSpeedPercent || 100);
         document.getElementById('race-set-aim-assist').value = raceSettings.aimAssist || 'medium';
         document.getElementById('race-set-auto-drive').value = raceSettings.autoDrive === true ? 'true' : 'false';
+        document.getElementById('race-set-right-stick').value = raceSettings.rightStickFeatures === false ? 'false' : 'true';
         document.getElementById('race-set-drone-speed').value = raceSettings.droneSpeed || 'normal';
         document.getElementById('race-set-obstacles').value = raceSettings.obstacleDensity || 'normal';
         document.getElementById('race-set-bilgi-time').value = raceSettings.bilgiQuestionTime || 15;
@@ -741,8 +753,10 @@
         raceSettings.laserDuration = Math.max(6, Math.min(30, parseInt(document.getElementById('race-set-laser-dur').value, 10) || 12));
         raceSettings.quizTimeBonus = Math.max(2, Math.min(15, parseInt(document.getElementById('race-set-quiz-bonus').value, 10) || 5));
         raceSettings.speedPercent = Math.max(60, Math.min(150, parseInt(document.getElementById('race-set-speed').value, 10) || 100));
+        raceSettings.padSpeedPercent = Math.max(60, Math.min(180, parseInt(document.getElementById('race-set-pad-speed').value, 10) || 100));
         raceSettings.aimAssist = document.getElementById('race-set-aim-assist').value || 'medium';
         raceSettings.autoDrive = document.getElementById('race-set-auto-drive').value === 'true';
+        raceSettings.rightStickFeatures = document.getElementById('race-set-right-stick').value !== 'false';
         raceSettings.droneSpeed = document.getElementById('race-set-drone-speed').value || 'normal';
         raceSettings.obstacleDensity = document.getElementById('race-set-obstacles').value || 'normal';
         raceSettings.bilgiQuestionTime = Math.max(8, Math.min(45, parseInt(document.getElementById('race-set-bilgi-time').value, 10) || 15));
@@ -987,6 +1001,7 @@
             }
 
             if (action === 'restart') {
+                if (raceSettings.rightStickFeatures === false) return;
                 if (currentScreen === 'race') {
                     InputManager.rumble('correct');
                     restartRaceMode();
@@ -998,6 +1013,16 @@
                     startQuizMode();
                     return;
                 }
+            }
+
+            if (action === 'cheatAimAssist') {
+                if (raceSettings.rightStickFeatures === false) return;
+                if (currentScreen === 'race' && RaceGame.setRoundAimAssist('medium')) {
+                    // Secret subtle double-pulse rumble (no visible HUD giveaway!)
+                    InputManager.rumble('laser');
+                    setTimeout(() => InputManager.rumble('laser'), 120);
+                }
+                return;
             }
 
             if (currentScreen === 'hub') {
