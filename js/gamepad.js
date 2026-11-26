@@ -369,6 +369,9 @@ window.InputManager = (function () {
             // Options (9) -> Pause / Menu
             if (justPressed(9)) emitAction('pause');
 
+            // R3 (11, Right Analog Stick Click) -> Instant Quick Restart!
+            if (justPressed(11)) emitAction('restart');
+
             // Menu navigation (D-Pad or Stick flick)
             const curDirX = dLeft || lx < -0.55 ? -1 : (dRight || lx > 0.55 ? 1 : 0);
             const curDirY = dUp || ly < -0.55 ? -1 : (dDown || ly > 0.55 ? 1 : 0);

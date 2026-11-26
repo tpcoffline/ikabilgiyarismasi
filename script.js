@@ -298,6 +298,7 @@
     };
 
     window.restartRaceMode = function () {
+        if (RaceGame.isRunning()) RaceGame.stop();
         document.getElementById('race-result-overlay').classList.add('hidden');
         document.getElementById('race-pause-overlay').classList.add('hidden');
         const mount = document.getElementById('race-canvas-container');
@@ -944,6 +945,20 @@
             if (!document.getElementById('admin-modal').classList.contains('hidden')) {
                 if (action === 'pause') closeAdmin();
                 return;
+            }
+
+            if (action === 'restart') {
+                if (currentScreen === 'race') {
+                    InputManager.rumble('correct');
+                    restartRaceMode();
+                    return;
+                } else if (currentScreen === 'quiz') {
+                    InputManager.rumble('correct');
+                    SoundFX.stopSuspense();
+                    stopQuizTimer();
+                    startQuizMode();
+                    return;
+                }
             }
 
             if (currentScreen === 'hub') {
