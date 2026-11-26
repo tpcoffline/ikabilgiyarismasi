@@ -533,7 +533,7 @@ html, body {
 }
 
 .leaderboard-list {
-    max-height: 310px;
+    max-height: 560px;
     overflow-y: auto;
     padding-right: 4px;
 }
@@ -1541,7 +1541,7 @@ body[data-control-mode="ps4"] .kb-key { display: none; }
 .clear-single-btn { background: rgba(249, 115, 22, 0.16); color: #fdba74; }
 .clear-all-btn { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
 
-#admin-leaderboard-list { max-height: 260px; overflow-y: auto; }
+#admin-leaderboard-list { max-height: 420px; overflow-y: auto; }
 .admin-lb-entry { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 7px 6px; border-bottom: 1px solid var(--border-subtle); font-size: 0.85rem; }
 .alb-rank { color: var(--text-muted); font-weight: 700; min-width: 22px; }
 .alb-input { background: #0b1220; border: 1px solid var(--border-subtle); color: #f8fafc; border-radius: 6px; padding: 5px 8px; font-size: 0.82rem; outline: none; }

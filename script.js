@@ -161,7 +161,16 @@
             const savedQuiz = localStorage.getItem('ika_leaderboard');
             if (savedQuiz) quizLeaderboard = JSON.parse(savedQuiz);
             const savedRace = localStorage.getItem('ika_race_leaderboard');
-            if (savedRace) raceLeaderboard = JSON.parse(savedRace);
+            if (savedRace) {
+                raceLeaderboard = JSON.parse(savedRace).map(e => ({
+                    ...e,
+                    netTime: typeof e.netTime === 'number' && !isNaN(e.netTime)
+                        ? e.netTime
+                        : (parseFloat(String(e.netTime || 0).replace(',', '.')) || 0),
+                    rawTime: typeof e.rawTime === 'number' && !isNaN(e.rawTime) ? e.rawTime : (parseFloat(e.netTime) || 0),
+                    bonusSeconds: typeof e.bonusSeconds === 'number' && !isNaN(e.bonusSeconds) ? e.bonusSeconds : 0
+                }));
+            }
             const ac = localStorage.getItem('ika_anon_counter');
             if (ac) anonymousCounter = parseInt(ac, 10) || 0;
         } catch (e) {}
@@ -202,6 +211,9 @@
         if (!listEl) return;
 
         const data = activeLeaderboardTab === 'race' ? raceLeaderboard : quizLeaderboard;
+        const countEl = document.getElementById('lb-total-count');
+        if (countEl) countEl.textContent = `(${data.length} kişi)`;
+
         if (data.length === 0) {
             listEl.innerHTML = activeLeaderboardTab === 'race'
                 ? '<div class="lb-empty"><i class="fas fa-flag-checkered"></i> Henüz kimse yarışmadı! İlk rekoru sen kır!</div>'
@@ -212,21 +224,21 @@
         const isRace = activeLeaderboardTab === 'race';
         const sorted = [...data].sort((a, b) => {
             if (isRace) {
-                const ta = typeof a.netTime === 'number' ? a.netTime : 9999;
-                const tb = typeof b.netTime === 'number' ? b.netTime : 9999;
+                const ta = typeof a.netTime === 'number' && !isNaN(a.netTime) ? a.netTime : 9999;
+                const tb = typeof b.netTime === 'number' && !isNaN(b.netTime) ? b.netTime : 9999;
                 return ta - tb; // En kısa net süre 1. sırada!
             }
-            return b.score - a.score;
+            return (Number(b.score) || 0) - (Number(a.score) || 0);
         });
         listEl.innerHTML = sorted.map((entry, i) => {
             const rankClass = i < 3 ? `lb-rank-${i + 1}` : 'lb-rank-default';
             const rankSymbol = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i + 1);
             const mainScore = isRace
-                ? `${(typeof entry.netTime === 'number' ? entry.netTime : 0).toFixed(1)} sn`
-                : `${Number(entry.score).toLocaleString('tr-TR')} puan`;
+                ? `${(typeof entry.netTime === 'number' && !isNaN(entry.netTime) ? entry.netTime : 0).toFixed(1)} sn`
+                : `${Number(entry.score || 0).toLocaleString('tr-TR')} puan`;
             const detail = isRace
-                ? `⏱️ ${(entry.rawTime || 0).toFixed(1)}s − ⏳ ${(entry.bonusSeconds || 0).toFixed(0)}s · 🎯 ${entry.drones || 0}`
-                : `${entry.correct}/${entry.total} doğru · ⏱️ ${entry.time}s`;
+                ? `⏱️ ${(Number(entry.rawTime) || 0).toFixed(1)}s − ⏳ ${(Number(entry.bonusSeconds) || 0).toFixed(0)}s · 🎯 ${entry.drones || 0}`
+                : `${entry.correct || 0}/${entry.total || 0} doğru · ⏱️ ${entry.time || 0}s`;
             return `<div class="lb-entry">
                 <div class="lb-rank ${rankClass}">${rankSymbol}</div>
                 <span class="lb-name">${escapeHTML(entry.name)}</span>
@@ -656,7 +668,9 @@
     };
 
     window.closeAdmin = function () {
+        saveAllAdminLbEdits(false);
         document.getElementById('admin-modal').classList.add('hidden');
+        renderLeaderboard();
     };
 
     window.updateRaceSpeedLabel = function (val) {
@@ -821,11 +835,18 @@
     };
 
     window.switchAdminLbTab = function (tab, btn) {
+        saveAllAdminLbEdits(false);
         activeAdminLbTab = tab;
         document.querySelectorAll('.admin-lb-tabs .filter-btn').forEach(b => b.classList.remove('active'));
         if (btn) btn.classList.add('active');
         renderAdminLeaderboard();
     };
+
+    function parseDecimalInput(raw) {
+        if (raw === null || raw === undefined) return NaN;
+        const cleaned = String(raw).trim().replace(',', '.');
+        return parseFloat(cleaned);
+    }
 
     function renderAdminLeaderboard() {
         const list = document.getElementById('admin-leaderboard-list');
@@ -834,8 +855,12 @@
         const data = isRace ? raceLeaderboard : quizLeaderboard;
         const indexed = data.map((entry, origIdx) => ({ entry, origIdx }));
         indexed.sort((a, b) => {
-            if (isRace) return (a.entry.netTime ?? 9999) - (b.entry.netTime ?? 9999);
-            return b.entry.score - a.entry.score;
+            if (isRace) {
+                const ta = typeof a.entry.netTime === 'number' && !isNaN(a.entry.netTime) ? a.entry.netTime : 9999;
+                const tb = typeof b.entry.netTime === 'number' && !isNaN(b.entry.netTime) ? b.entry.netTime : 9999;
+                return ta - tb;
+            }
+            return (Number(b.entry.score) || 0) - (Number(a.entry.score) || 0);
         });
         if (indexed.length === 0) {
             list.innerHTML = '<div class="lb-empty" style="padding:14px;">Kayıt yok</div>';
@@ -844,68 +869,82 @@
         list.innerHTML = indexed.map(({ entry, origIdx }, i) => {
             const safeName = escapeHTML(entry.name);
             if (isRace) {
-                const netVal = (typeof entry.netTime === 'number' ? entry.netTime : 0).toFixed(1);
-                return `<div class="admin-lb-entry admin-lb-editable">
+                const netVal = (typeof entry.netTime === 'number' && !isNaN(entry.netTime) ? entry.netTime : 0).toFixed(1);
+                return `<div class="admin-lb-entry admin-lb-editable" data-orig-idx="${origIdx}">
                     <span class="alb-rank">${i + 1}.</span>
-                    <input type="text" class="alb-input alb-name" id="alb-name-${origIdx}" value="${safeName}" maxlength="20" title="İsim">
+                    <input type="text" class="alb-input alb-name" id="alb-name-${origIdx}" value="${safeName}" maxlength="20" title="İsim" onchange="saveAllAdminLbEdits(false)">
                     <div class="alb-num-wrap" title="Net Süre (sn)">
-                        <input type="number" step="0.1" min="0" class="alb-input alb-num" id="alb-val-${origIdx}" value="${netVal}">
+                        <input type="text" inputmode="decimal" class="alb-input alb-num" id="alb-val-${origIdx}" value="${netVal}" onchange="saveAllAdminLbEdits(false)">
                         <small>sn</small>
                     </div>
-                    <button class="alb-btn alb-save" onclick="saveAdminLbEntry(${origIdx})" title="Kaydet"><i class="fas fa-check"></i></button>
+                    <button class="alb-btn alb-save" onclick="saveAdminLbEntry(${origIdx})" title="Kaydet ve Sırala"><i class="fas fa-check"></i></button>
                     <button class="alb-btn alb-del" onclick="deleteAdminLbEntry(${origIdx})" title="Kaydı Sil"><i class="fas fa-trash"></i></button>
                 </div>`;
             } else {
                 const scoreVal = Number(entry.score) || 0;
                 const timeVal = parseFloat(entry.time) || 0;
-                return `<div class="admin-lb-entry admin-lb-editable">
+                return `<div class="admin-lb-entry admin-lb-editable" data-orig-idx="${origIdx}">
                     <span class="alb-rank">${i + 1}.</span>
-                    <input type="text" class="alb-input alb-name" id="alb-name-${origIdx}" value="${safeName}" maxlength="20" title="İsim">
+                    <input type="text" class="alb-input alb-name" id="alb-name-${origIdx}" value="${safeName}" maxlength="20" title="İsim" onchange="saveAllAdminLbEdits(false)">
                     <div class="alb-num-wrap" title="Puan">
-                        <input type="number" step="1" min="0" class="alb-input alb-num" id="alb-val-${origIdx}" value="${scoreVal}">
+                        <input type="text" inputmode="numeric" class="alb-input alb-num" id="alb-val-${origIdx}" value="${scoreVal}" onchange="saveAllAdminLbEdits(false)">
                         <small>p</small>
                     </div>
                     <div class="alb-num-wrap" title="Süre (sn)">
-                        <input type="number" step="0.1" min="0" class="alb-input alb-num" id="alb-time-${origIdx}" value="${timeVal.toFixed(1)}">
+                        <input type="text" inputmode="decimal" class="alb-input alb-num" id="alb-time-${origIdx}" value="${timeVal.toFixed(1)}" onchange="saveAllAdminLbEdits(false)">
                         <small>sn</small>
                     </div>
-                    <button class="alb-btn alb-save" onclick="saveAdminLbEntry(${origIdx})" title="Kaydet"><i class="fas fa-check"></i></button>
+                    <button class="alb-btn alb-save" onclick="saveAdminLbEntry(${origIdx})" title="Kaydet ve Sırala"><i class="fas fa-check"></i></button>
                     <button class="alb-btn alb-del" onclick="deleteAdminLbEntry(${origIdx})" title="Kaydı Sil"><i class="fas fa-trash"></i></button>
                 </div>`;
             }
         }).join('');
     }
 
-    window.saveAdminLbEntry = function (origIdx) {
+    window.saveAllAdminLbEdits = function (shouldRerender) {
+        const list = document.getElementById('admin-leaderboard-list');
+        if (!list) return;
+        const rows = list.querySelectorAll('.admin-lb-editable');
+        if (rows.length === 0) return;
+
         const isRace = activeAdminLbTab === 'race';
         const data = isRace ? raceLeaderboard : quizLeaderboard;
-        const entry = data[origIdx];
-        if (!entry) return;
 
-        const nameEl = document.getElementById(`alb-name-${origIdx}`);
-        const valEl = document.getElementById(`alb-val-${origIdx}`);
-        const newName = (nameEl ? nameEl.value.trim() : '') || entry.name;
-        const newVal = parseFloat(valEl ? valEl.value : '');
+        rows.forEach(row => {
+            const origIdx = parseInt(row.getAttribute('data-orig-idx'), 10);
+            const entry = data[origIdx];
+            if (!entry) return;
 
-        entry.name = newName;
-        if (isRace) {
-            if (!isNaN(newVal) && newVal >= 0) {
-                entry.netTime = parseFloat(newVal.toFixed(1));
-                entry.rawTime = parseFloat((entry.netTime + (entry.bonusSeconds || 0)).toFixed(1));
+            const nameEl = document.getElementById(`alb-name-${origIdx}`);
+            const valEl = document.getElementById(`alb-val-${origIdx}`);
+            const newName = (nameEl ? nameEl.value.trim() : '') || entry.name;
+            const newVal = parseDecimalInput(valEl ? valEl.value : '');
+
+            entry.name = newName;
+            if (isRace) {
+                if (!isNaN(newVal) && newVal >= 0) {
+                    entry.netTime = parseFloat(newVal.toFixed(1));
+                    entry.rawTime = parseFloat((entry.netTime + (entry.bonusSeconds || 0)).toFixed(1));
+                }
+            } else {
+                if (!isNaN(newVal) && newVal >= 0) entry.score = Math.round(newVal);
+                const timeEl = document.getElementById(`alb-time-${origIdx}`);
+                const newTime = parseDecimalInput(timeEl ? timeEl.value : '');
+                if (!isNaN(newTime) && newTime >= 0) entry.time = newTime.toFixed(1);
             }
-        } else {
-            if (!isNaN(newVal) && newVal >= 0) entry.score = Math.round(newVal);
-            const timeEl = document.getElementById(`alb-time-${origIdx}`);
-            const newTime = parseFloat(timeEl ? timeEl.value : '');
-            if (!isNaN(newTime) && newTime >= 0) entry.time = newTime.toFixed(1);
-        }
+        });
 
         saveLeaderboards();
-        renderAdminLeaderboard();
         renderLeaderboard();
+        if (shouldRerender) renderAdminLeaderboard();
+    };
+
+    window.saveAdminLbEntry = function () {
+        saveAllAdminLbEdits(true);
     };
 
     window.deleteAdminLbEntry = function (origIdx) {
+        saveAllAdminLbEdits(false);
         const isRace = activeAdminLbTab === 'race';
         const data = isRace ? raceLeaderboard : quizLeaderboard;
         if (!data[origIdx]) return;
