@@ -831,21 +831,90 @@
         if (!list) return;
         const isRace = activeAdminLbTab === 'race';
         const data = isRace ? raceLeaderboard : quizLeaderboard;
-        const sorted = [...data].sort((a, b) => {
-            if (isRace) return (a.netTime ?? 9999) - (b.netTime ?? 9999);
-            return b.score - a.score;
+        const indexed = data.map((entry, origIdx) => ({ entry, origIdx }));
+        indexed.sort((a, b) => {
+            if (isRace) return (a.entry.netTime ?? 9999) - (b.entry.netTime ?? 9999);
+            return b.entry.score - a.entry.score;
         });
-        if (sorted.length === 0) {
+        if (indexed.length === 0) {
             list.innerHTML = '<div class="lb-empty" style="padding:14px;">Kayıt yok</div>';
             return;
         }
-        list.innerHTML = sorted.map((e, i) => {
-            const val = isRace
-                ? `${(typeof e.netTime === 'number' ? e.netTime : 0).toFixed(1)} sn`
-                : `${Number(e.score).toLocaleString('tr-TR')} puan`;
-            return `<div class="admin-lb-entry"><span>${i + 1}. ${escapeHTML(e.name)}</span><span>${val}</span></div>`;
+        list.innerHTML = indexed.map(({ entry, origIdx }, i) => {
+            const safeName = escapeHTML(entry.name);
+            if (isRace) {
+                const netVal = (typeof entry.netTime === 'number' ? entry.netTime : 0).toFixed(1);
+                return `<div class="admin-lb-entry admin-lb-editable">
+                    <span class="alb-rank">${i + 1}.</span>
+                    <input type="text" class="alb-input alb-name" id="alb-name-${origIdx}" value="${safeName}" maxlength="20" title="İsim">
+                    <div class="alb-num-wrap" title="Net Süre (sn)">
+                        <input type="number" step="0.1" min="0" class="alb-input alb-num" id="alb-val-${origIdx}" value="${netVal}">
+                        <small>sn</small>
+                    </div>
+                    <button class="alb-btn alb-save" onclick="saveAdminLbEntry(${origIdx})" title="Kaydet"><i class="fas fa-check"></i></button>
+                    <button class="alb-btn alb-del" onclick="deleteAdminLbEntry(${origIdx})" title="Kaydı Sil"><i class="fas fa-trash"></i></button>
+                </div>`;
+            } else {
+                const scoreVal = Number(entry.score) || 0;
+                const timeVal = parseFloat(entry.time) || 0;
+                return `<div class="admin-lb-entry admin-lb-editable">
+                    <span class="alb-rank">${i + 1}.</span>
+                    <input type="text" class="alb-input alb-name" id="alb-name-${origIdx}" value="${safeName}" maxlength="20" title="İsim">
+                    <div class="alb-num-wrap" title="Puan">
+                        <input type="number" step="1" min="0" class="alb-input alb-num" id="alb-val-${origIdx}" value="${scoreVal}">
+                        <small>p</small>
+                    </div>
+                    <div class="alb-num-wrap" title="Süre (sn)">
+                        <input type="number" step="0.1" min="0" class="alb-input alb-num" id="alb-time-${origIdx}" value="${timeVal.toFixed(1)}">
+                        <small>sn</small>
+                    </div>
+                    <button class="alb-btn alb-save" onclick="saveAdminLbEntry(${origIdx})" title="Kaydet"><i class="fas fa-check"></i></button>
+                    <button class="alb-btn alb-del" onclick="deleteAdminLbEntry(${origIdx})" title="Kaydı Sil"><i class="fas fa-trash"></i></button>
+                </div>`;
+            }
         }).join('');
     }
+
+    window.saveAdminLbEntry = function (origIdx) {
+        const isRace = activeAdminLbTab === 'race';
+        const data = isRace ? raceLeaderboard : quizLeaderboard;
+        const entry = data[origIdx];
+        if (!entry) return;
+
+        const nameEl = document.getElementById(`alb-name-${origIdx}`);
+        const valEl = document.getElementById(`alb-val-${origIdx}`);
+        const newName = (nameEl ? nameEl.value.trim() : '') || entry.name;
+        const newVal = parseFloat(valEl ? valEl.value : '');
+
+        entry.name = newName;
+        if (isRace) {
+            if (!isNaN(newVal) && newVal >= 0) {
+                entry.netTime = parseFloat(newVal.toFixed(1));
+                entry.rawTime = parseFloat((entry.netTime + (entry.bonusSeconds || 0)).toFixed(1));
+            }
+        } else {
+            if (!isNaN(newVal) && newVal >= 0) entry.score = Math.round(newVal);
+            const timeEl = document.getElementById(`alb-time-${origIdx}`);
+            const newTime = parseFloat(timeEl ? timeEl.value : '');
+            if (!isNaN(newTime) && newTime >= 0) entry.time = newTime.toFixed(1);
+        }
+
+        saveLeaderboards();
+        renderAdminLeaderboard();
+        renderLeaderboard();
+    };
+
+    window.deleteAdminLbEntry = function (origIdx) {
+        const isRace = activeAdminLbTab === 'race';
+        const data = isRace ? raceLeaderboard : quizLeaderboard;
+        if (!data[origIdx]) return;
+        if (confirm(`"${data[origIdx].name}" kaydını silmek istediğinize emin misiniz?`)) {
+            data.splice(origIdx, 1);
+            saveLeaderboards();
+            renderAdminLeaderboard();
+            renderLeaderboard();
+        }
+    };
 
     window.clearCurrentAdminLeaderboard = function () {
         const label = activeAdminLbTab === 'race' ? 'Yarış Modu' : 'Bilgi Yarışması';
