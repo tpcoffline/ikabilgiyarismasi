@@ -2,178 +2,564 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İKA Kulübü Bilgi Yarışması</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BARÜ İKA Kulübü | 74 BARKUT 74 Arena</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body data-control-mode="keyboard">
 
-    <div id="logo-container" class="logo-center">
-        <img src="assets/logo.png" alt="İKA Logo" id="game-logo" onclick="returnToMainMenu()" title="Ana Menüye Dön">
-    </div>
+    <!-- Confetti Celebration Canvas -->
+    <canvas id="confetti-canvas"></canvas>
 
-    <div class="game-container">
-        <div id="puzzle-container" class="hidden">
-            <div class="puzzle-piece piece-1"></div>
-            <div class="puzzle-piece piece-2"></div>
-            <div class="puzzle-piece piece-3"></div>
-            <div class="puzzle-piece piece-4"></div>
-            <div class="puzzle-piece piece-5"></div>
+    <!-- Animated Tech Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- TOP NAVIGATION BAR (Visible on Hub & Quiz) -->
+    <header id="top-bar" class="top-bar">
+        <div class="top-bar-left">
+            <button class="brand-pill" onclick="returnToHub()" title="Ana Menü / Mod Seçimi">
+                <img src="assets/logo.png" alt="BARÜ İKA Logo">
+                <div class="brand-text">
+                    <span class="brand-title">BARÜ İKA</span>
+                    <span class="brand-sub">74 BARKUT 74</span>
+                </div>
+            </button>
+            <button id="back-to-hub-btn" class="nav-chip hidden" onclick="returnToHub()">
+                <i class="fas fa-th-large"></i> Mod Değiştir
+            </button>
         </div>
 
-        <!-- Timer Bar -->
-        <div id="timer-bar-container" class="hidden">
-            <div id="timer-bar"></div>
-            <span id="timer-text">0.0s</span>
+        <div class="top-bar-right">
+            <span class="gamepad-status-badge" title="Aktif Kontrol Cihazı">⌨️ Klavye Modu</span>
+            <button class="icon-btn sound-toggle-btn" onclick="SoundFX.toggleMute()" title="Sesi Kapat">
+                <i class="fas fa-volume-up"></i>
+            </button>
         </div>
+    </header>
 
-        <div id="quiz-area" class="hidden">
-            <div id="difficulty-badge" class="difficulty-badge"></div>
-            <h2 id="question-text">Soru buraya gelecek...</h2>
-            <div id="options-container">
-                <button class="option-btn" data-index="0">A</button>
-                <button class="option-btn" data-index="1">B</button>
-                <button class="option-btn" data-index="2">C</button>
-                <button class="option-btn" data-index="3">D</button>
+    <!-- ==================== 1. MAIN HUB / MODE SELECTOR ==================== -->
+    <main id="hub-screen" class="hub-screen">
+        <section class="hub-hero">
+            <div class="hero-logo-badge">
+                <img src="assets/logo.png" alt="BARÜ İnsansız Kara Aracı Kulübü">
+            </div>
+            <div class="hero-copy">
+                <div class="hero-eyebrow"><i class="fas fa-robot"></i> BARTIN ÜNİVERSİTESİ · ROBOTXPERT</div>
+                <h1>BARKUT <span>ARENA</span></h1>
+                <p>Oyun modunu seç, <strong>74 BARKUT 74</strong> ile sahaya çık ve liderlik tablosunda zirveye yerleş!</p>
+            </div>
+        </section>
+
+        <!-- Mode Selection Cards -->
+        <section class="mode-grid">
+            <!-- MODE 1: 3D BARKUT YARIŞÇI -->
+            <article class="mode-card mode-card-race" id="mode-card-race" onclick="startRaceMode()">
+                <div class="mode-badge-row">
+                    <span class="mode-tag tag-new"><i class="fas fa-fire"></i> YENİ · 3D YARIŞ</span>
+                    <span class="mode-tag tag-ps4"><i class="fas fa-gamepad"></i> PS4 Kolu Uyumlu</span>
+                </div>
+                <div class="mode-visual mode-visual-3d" id="barkut-3d-showcase">
+                    <!-- Live rotating 3D BARKUT 74 model -->
+                </div>
+                <div class="mode-body">
+                    <h2>BARKUT YARIŞÇI</h2>
+                    <p>TRT Yarışçı efsanesi BARÜ İKA ile! Tam kontrol sürüşle dubalardan kaç, <strong>Bilgi</strong> yolunda soru çöz veya <strong>Cesaret</strong> yolunda lazerle droneları vur!</p>
+                    <div class="mode-chips">
+                        <span>⏱️ En Kısa Süre</span>
+                        <span>🔵 Bilgi Yolu (-5 sn)</span>
+                        <span>🔥 Cesaret (3 Drone = -1 sn)</span>
+                        <span>⚡ Turbo Pedi</span>
+                    </div>
+                </div>
+                <div class="mode-cta">
+                    <span class="cta-btn cta-race"><i class="fas fa-flag-checkered"></i> Yarışa Başla</span>
+                </div>
+            </article>
+
+            <!-- MODE 2: BİLGİ YARIŞMASI -->
+            <article class="mode-card mode-card-quiz" id="mode-card-quiz" onclick="startQuizMode()">
+                <div class="mode-badge-row">
+                    <span class="mode-tag tag-quiz"><i class="fas fa-brain"></i> KLASİK MOD</span>
+                    <span class="mode-tag tag-bank"><i class="fas fa-database"></i> <span id="hub-q-count">426</span> Soru</span>
+                </div>
+                <div class="mode-visual mode-visual-quiz">
+                    <div class="quiz-preview-halo"></div>
+                    <img src="assets/araba.png" alt="BARKUT Yapboz" class="quiz-preview-img">
+                </div>
+                <div class="mode-body">
+                    <h2>BİLGİ YARIŞMASI</h2>
+                    <p>Soruları doğru ve hızlı yanıtla, <strong>İKA parçalarını</strong> tek tek birleştirerek aracı tamamla ve en yüksek hız bonusunu kazan!</p>
+                    <div class="mode-chips">
+                        <span>🧩 5 Parça Yapboz</span>
+                        <span>⚡ Hız Bonusu</span>
+                        <span>🎯 Zorluk Çarpanı</span>
+                    </div>
+                </div>
+                <div class="mode-cta">
+                    <span class="cta-btn cta-quiz"><i class="fas fa-play"></i> Yarışmaya Başla</span>
+                </div>
+            </article>
+        </section>
+
+        <!-- Control Selector & Quick Guide -->
+        <section class="control-strip">
+            <div class="control-strip-left">
+                <span class="control-label"><i class="fas fa-sliders-h"></i> Kontrol Seçeneği:</span>
+                <div class="control-pills">
+                    <button class="control-pill active" data-mode="auto" onclick="InputManager.setPreferredMode('auto')">✨ Otomatik</button>
+                    <button class="control-pill" data-mode="ps4" onclick="InputManager.setPreferredMode('ps4')">🎮 PS4 Kolu</button>
+                    <button class="control-pill" data-mode="keyboard" onclick="InputManager.setPreferredMode('keyboard')">⌨️ Klavye</button>
+                    <button class="control-pill" data-mode="touch" onclick="InputManager.setPreferredMode('touch')">📱 Dokunmatik</button>
+                </div>
+            </div>
+            <div class="control-hints">
+                <span class="hint-ps4"><strong>PS4:</strong> Sol Analog / D-Pad: İleri-Yön · R2: Gaz · L2/□: Fren · ✕/R2: Lazer · △○✕□: Şıklar</span>
+                <span class="hint-kb"><strong>Klavye:</strong> W/↑: Gaz · S/↓: Fren · A/D veya ←/→: Direksiyon · Space: Lazer · 1-4: Şıklar</span>
+                <span class="hint-touch"><strong>Dokunmatik:</strong> Gaz/Fren ve yön butonlarıyla sür · Cesaret modunda dronelara dokun!</span>
+            </div>
+        </section>
+
+        <!-- Tabbed Leaderboard Section -->
+        <section class="leaderboard-card">
+            <div class="lb-header">
+                <h3><i class="fas fa-trophy"></i> Sıralama Tablosu</h3>
+                <div class="lb-tabs">
+                    <button class="lb-tab active" data-lb="race" onclick="switchLeaderboardTab('race')">
+                        <i class="fas fa-flag-checkered"></i> Yarış Modu
+                    </button>
+                    <button class="lb-tab" data-lb="quiz" onclick="switchLeaderboardTab('quiz')">
+                        <i class="fas fa-brain"></i> Bilgi Yarışması
+                    </button>
+                </div>
+            </div>
+            <div id="leaderboard-list" class="leaderboard-list"></div>
+        </section>
+    </main>
+
+    <!-- ==================== 2. QUIZ MODE SCREEN ==================== -->
+    <section id="quiz-screen" class="quiz-screen hidden">
+        <div class="quiz-shell">
+            <div class="quiz-top-meta">
+                <div id="quiz-progress-pill" class="quiz-progress-pill">Soru 1 / 5</div>
+                <div id="difficulty-badge" class="difficulty-badge diff-kolay">🟢 Kolay</div>
+                <div class="quiz-timer-readout"><i class="fas fa-stopwatch"></i> <span id="timer-text">0.0s</span></div>
+            </div>
+
+            <div id="timer-bar-container" class="timer-bar-container">
+                <div id="timer-bar"></div>
+            </div>
+
+            <div id="puzzle-container" class="puzzle-container">
+                <div class="puzzle-backdrop"></div>
+                <div class="puzzle-piece piece-1"></div>
+                <div class="puzzle-piece piece-2"></div>
+                <div class="puzzle-piece piece-3"></div>
+                <div class="puzzle-piece piece-4"></div>
+                <div class="puzzle-piece piece-5"></div>
+            </div>
+
+            <div id="quiz-area" class="quiz-area">
+                <h2 id="question-text">Soru yükleniyor...</h2>
+                <div id="options-container" class="options-container">
+                    <button class="option-btn" data-index="0"></button>
+                    <button class="option-btn" data-index="1"></button>
+                    <button class="option-btn" data-index="2"></button>
+                    <button class="option-btn" data-index="3"></button>
+                </div>
+            </div>
+
+            <!-- Quiz Win Screen -->
+            <div id="win-screen" class="result-card result-win hidden">
+                <div class="result-icon">🏆</div>
+                <h1>TEBRİKLER!</h1>
+                <p>74 BARKUT 74 aracını başarıyla tamamladın!</p>
+                <div id="win-score-display" class="score-display"></div>
+                <div class="name-entry-section">
+                    <p class="name-prompt">İsmini girerek Bilgi Yarışması sıralamasına kaydol!</p>
+                    <input type="text" id="win-name-input" placeholder="İsmini yaz..." maxlength="20">
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="saveQuizScore(true, true)"><i class="fas fa-check"></i> Tamam</button>
+                        <button class="btn-secondary" onclick="saveQuizScore(false, true)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
+                        <button class="btn-ghost" onclick="skipQuizAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Lose Screen -->
+            <div id="lose-screen" class="result-card result-lose hidden">
+                <div class="result-icon">⚡</div>
+                <h1>MAALESEF!</h1>
+                <p>Yanlış cevap verdin. Aracın bağlantısı koptu.</p>
+                <div id="lose-score-display" class="score-display"></div>
+                <div class="name-entry-section">
+                    <p class="name-prompt">Yine de skorunu sıralamaya kaydetmek ister misin?</p>
+                    <input type="text" id="lose-name-input" placeholder="İsmini yaz..." maxlength="20">
+                    <div class="action-buttons">
+                        <button class="btn-danger" onclick="saveQuizScore(true, false)"><i class="fas fa-check"></i> Tamam</button>
+                        <button class="btn-secondary" onclick="saveQuizScore(false, false)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
+                        <button class="btn-ghost" onclick="skipQuizAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. 3D RACE MODE SCREEN ==================== -->
+    <section id="race-screen" class="race-screen hidden">
+        <!-- Fullscreen Three.js WebGL Mount -->
+        <div id="race-canvas-container" class="race-canvas-container"></div>
+
+        <!-- Turbo Speed Lines Visual Effect -->
+        <div id="turbo-speed-lines" class="turbo-speed-lines"></div>
+
+        <!-- Screen Popups Layer (+3s, +220 etc.) -->
+        <div id="race-popups" class="race-popups"></div>
+
+        <!-- Race HUD -->
+        <div class="race-hud">
+            <!-- Top Left: Exit/Pause + Collected Bonus Time + Combo -->
+            <div class="hud-left">
+                <button class="hud-btn" onclick="RaceGame.togglePause()" title="Duraklat / Menü (Esc / Options)">
+                    <i class="fas fa-pause"></i> <span>Menü</span>
+                </button>
+                <div class="hud-score-pill">
+                    <span class="hud-score-label">⏳ KAZANILAN</span>
+                    <strong id="race-bonus-value">-0 sn</strong>
+                    <span id="race-combo-badge" class="hud-combo">🔥 x1</span>
+                </div>
+            </div>
+
+            <!-- Top Center: TRT Yarışçı Stopwatch (Counts UP) -->
+            <div class="hud-center">
+                <div id="race-timer-pill" class="race-timer-pill">
+                    <span class="hourglass-icon">⏱️</span>
+                    <span id="race-timer-value">0.0s</span>
+                </div>
+                <div id="race-timer-bonus" class="race-timer-bonus">-5 sn!</div>
+            </div>
+
+            <!-- Top Right: Live Track Progress Minimap + Camera + Mute -->
+            <div class="hud-right">
+                <div class="track-minimap">
+                    <div class="track-minimap-top">
+                        <span><i class="fas fa-route"></i> PİST</span>
+                        <strong id="track-progress-pct">0%</strong>
+                    </div>
+                    <div class="track-bar">
+                        <div id="track-progress-fill" class="track-bar-fill"></div>
+                        <div id="track-split-markers" class="track-split-markers"></div>
+                        <div id="track-player-marker" class="track-player-marker">🚙</div>
+                        <div class="track-finish-flag">🏁</div>
+                    </div>
+                </div>
+                <div class="hud-quick-btns">
+                    <button class="hud-icon-btn" onclick="RaceGame.toggleCamera()" title="Kamera Açısı (C / L1)">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button class="hud-icon-btn sound-toggle-btn" onclick="SoundFX.toggleMute()" title="Sesi Kapat">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div id="win-screen" class="hidden">
-            <h1>TEBRİKLER!</h1>
-            <p>Aracı başarıyla tamamladın.</p>
-            <div id="win-score-display" class="score-display"></div>
-            <div id="win-name-section" class="name-entry-section">
-                <p class="name-prompt">İsmini girerek sıralamaya kaydol!</p>
-                <input type="text" id="win-name-input" placeholder="İsmini yaz..." maxlength="20">
-                <div class="action-buttons">
-                    <button onclick="saveScore(true)"><i class="fas fa-check"></i> Tamam</button>
-                    <button class="menu-btn" onclick="saveScore(false)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
-                </div>
-                <div class="action-buttons" style="margin-top:10px;">
-                    <button class="menu-btn" onclick="skipAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+        <!-- Floating Event Banner (Road Split Alert / Turbo / Cone Hit) -->
+        <div id="race-floating-banner" class="race-floating-banner"></div>
+
+        <!-- Start Countdown (3 - 2 - 1 - BAŞLA!) -->
+        <div id="race-countdown" class="race-countdown hidden">3</div>
+
+        <!-- Bottom-Right Speedometer & Speed Pad Varex Bar -->
+        <div class="race-bottom-hud">
+            <div class="speed-card">
+                <div class="speed-num"><span id="race-speed-value">0</span><small>km/h</small></div>
+                <div class="nitro-box">
+                    <div class="nitro-label">🔥 VAREX BOOST <span class="nitro-key">(SPEED PAD)</span></div>
+                    <div class="nitro-bar"><div id="race-nitro-fill" class="nitro-fill"></div></div>
                 </div>
             </div>
         </div>
 
-        <div id="lose-screen" class="hidden">
-            <h1>MAALESEF!</h1>
-            <p>Yanlış cevap verdin. Aracın bağlantısı koptu.</p>
-            <div id="lose-score-display" class="score-display"></div>
-            <div id="lose-name-section" class="name-entry-section">
-                <p class="name-prompt">Yine de skorunu kaydetmek ister misin?</p>
-                <input type="text" id="lose-name-input" placeholder="İsmini yaz..." maxlength="20">
-                <div class="action-buttons">
-                    <button onclick="saveScoreLose(true)"><i class="fas fa-check"></i> Tamam</button>
-                    <button class="menu-btn" onclick="saveScoreLose(false)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
+        <!-- Touch Driving Controls (Shown automatically on mobile/tablet or Touch mode) -->
+        <div id="race-touch-controls" class="race-touch-controls">
+            <div class="touch-pad-left">
+                <button id="touch-left" class="touch-btn touch-steer"><i class="fas fa-chevron-left"></i></button>
+                <button id="touch-right" class="touch-btn touch-steer"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="touch-pad-right">
+                <button id="touch-brake" class="touch-btn touch-brake">FREN</button>
+                <button id="touch-gas" class="touch-btn touch-gas">GAZ</button>
+            </div>
+        </div>
+
+        <!-- ===== BİLGİ YOLU OVERLAY (Question from questions.js) ===== -->
+        <div id="bilgi-gate-overlay" class="race-modal-overlay hidden">
+            <div class="bilgi-modal">
+                <div class="bilgi-header">
+                    <span class="bilgi-title"><i class="fas fa-brain"></i> BİLGİ YOLU</span>
+                    <span id="bilgi-diff-badge" class="bilgi-diff-pill">🟢 Kolay · +8 sn</span>
                 </div>
-                <div class="action-buttons" style="margin-top:10px;">
-                    <button class="menu-btn" onclick="skipAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+                <div class="bilgi-timer-bar"><div id="bilgi-timer-fill"></div></div>
+                <h2 id="bilgi-question-text">Soru geliyor...</h2>
+                <div class="bilgi-options-grid">
+                    <button class="bilgi-option-btn"></button>
+                    <button class="bilgi-option-btn"></button>
+                    <button class="bilgi-option-btn"></button>
+                    <button class="bilgi-option-btn"></button>
+                </div>
+                <div id="bilgi-feedback" class="bilgi-feedback"></div>
+            </div>
+        </div>
+
+        <!-- ===== CESARET YOLU: LAZER DRONE MİNİ-OYUNU HUD ===== -->
+        <div id="cesaret-hud" class="cesaret-hud hidden">
+            <div class="cesaret-top-bar">
+                <div class="cesaret-title-group">
+                    <span class="cesaret-tag">🔥 CESARET YOLU · BARKUT LAZER MODU</span>
+                    <div class="drone-legend">
+                        <span class="dl-green">🎯 Her 3 Drone = -1 sn Süre İndirimi!</span>
+                        <span class="dl-amber">🟢 Keşif · 🟡 FPV · 🔴👑 Komuta</span>
+                    </div>
+                </div>
+                <div class="cesaret-stats">
+                    <div class="cstat"><small>SÜRE</small><strong id="cesaret-timer">12.0s</strong></div>
+                    <div class="cstat"><small>VURULAN</small><strong id="cesaret-hits">0</strong></div>
+                    <div class="cstat highlight"><small>KAZANILAN</small><strong id="cesaret-bonus">+0 sn</strong></div>
+                </div>
+            </div>
+
+            <!-- Tactical Crosshair Reticle -->
+            <div id="laser-reticle" class="laser-reticle">
+                <div class="reticle-ring"></div>
+                <div class="reticle-cross-h"></div>
+                <div class="reticle-cross-v"></div>
+                <div class="reticle-dot"></div>
+                <span id="reticle-target-tag" class="reticle-tag">HEDEF ARA</span>
+            </div>
+
+            <div class="cesaret-bottom-tip">
+                <span>🎯 <strong>PS4:</strong> Analog ile nişan al, <strong>R2 / ✕</strong> ile ateş et!</span>
+                <span>🖱️📱 <strong>Fare / Dokunmatik:</strong> Droneların üstüne tıkla / dokun!</span>
+            </div>
+
+            <!-- Round Summary Toast -->
+            <div id="cesaret-summary" class="cesaret-summary hidden">
+                <div class="cesaret-sum-icon">🎯</div>
+                <h3 id="cesaret-sum-hits">5 Drone Vuruldu!</h3>
+                <p id="cesaret-sum-time">+16 saniye & +950 puan</p>
+            </div>
+        </div>
+
+        <!-- ===== PAUSE OVERLAY ===== -->
+        <div id="race-pause-overlay" class="race-modal-overlay hidden">
+            <div class="pause-modal">
+                <h2><i class="fas fa-pause-circle"></i> Yarış Duraklatıldı</h2>
+                <p>Ne yapmak istersin?</p>
+                <div class="pause-actions">
+                    <button class="btn-primary" onclick="RaceGame.togglePause()"><i class="fas fa-play"></i> Devam Et</button>
+                    <button class="btn-secondary" onclick="restartRaceMode()"><i class="fas fa-redo"></i> Yeniden Başlat</button>
+                    <button class="btn-ghost" onclick="returnToHub()"><i class="fas fa-th-large"></i> Mod Seçimine Dön</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Leaderboard & Start Button -->
-    <div id="main-menu-area">
-        <button id="start-btn" onclick="startAnimation()">Yarışmaya Başla</button>
-        <div id="leaderboard-section">
-            <h3><i class="fas fa-trophy"></i> Sıralama Tablosu</h3>
-            <div id="leaderboard-list"></div>
+        <!-- ===== RACE RESULT & LEADERBOARD SAVE OVERLAY ===== -->
+        <div id="race-result-overlay" class="race-modal-overlay hidden">
+            <div class="result-card race-result-card">
+                <div id="race-res-icon" class="result-icon">🏁</div>
+                <h1 id="race-res-title">YARIŞ TAMAMLANDI!</h1>
+                <p id="race-res-subtitle">74 BARKUT 74 ile harika bir performans!</p>
+
+                <div id="race-score-display" class="score-display"></div>
+
+                <div id="race-stats-grid" class="race-stats-grid"></div>
+
+                <div class="name-entry-section">
+                    <p class="name-prompt">İsmini girerek Yarış Modu sıralamasına kaydol!</p>
+                    <input type="text" id="race-name-input" placeholder="İsmini yaz..." maxlength="20">
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="saveRaceScore(true)"><i class="fas fa-check"></i> Tamam</button>
+                        <button class="btn-secondary" onclick="saveRaceScore(false)"><i class="fas fa-user-plus"></i> İsimsiz Ekle</button>
+                        <button class="btn-ghost" onclick="skipRaceAndReturn()"><i class="fas fa-times"></i> Sıralamaya Ekleme</button>
+                    </div>
+                    <div class="action-buttons" style="margin-top:10px;">
+                        <button class="btn-accent" onclick="restartRaceMode()"><i class="fas fa-redo"></i> Tekrar Yarış</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div id="admin-trigger" onclick="checkAdminPassword()" title="Yönetim">
+    <!-- ==================== ADMIN TRIGGER & MODAL ==================== -->
+    <div id="admin-trigger" onclick="checkAdminPassword()" title="Yönetim Paneli">
         <i class="fas fa-cogs"></i>
     </div>
 
     <div id="admin-modal" class="hidden">
         <div class="admin-content">
             <div class="admin-header">
-                <h2><i class="fas fa-server"></i> İKA Soru Merkezi</h2>
+                <h2><i class="fas fa-server"></i> BARÜ İKA Yönetim Merkezi</h2>
                 <span class="close-btn" onclick="closeAdmin()">&times;</span>
             </div>
-            
+
             <div class="admin-body">
-                <!-- Sol Kolon: Ayarlar + Soru Ekle -->
+                <!-- Sol Kolon: Yarış Ayarları + Bilgi Yarışması Ayarları + Soru Ekle -->
                 <div class="admin-left-col">
-                    <!-- Yarışma Ayarları -->
+                    <!-- Yarış Modu Ayarları -->
+                    <div class="admin-panel-section">
+                        <h3><i class="fas fa-flag-checkered"></i> Yarış Modu Ayarları</h3>
+                        <div class="admin-two-col">
+                            <div class="form-group">
+                                <label>Pist Uzunluğu</label>
+                                <select id="race-set-track-size">
+                                    <option value="short">Kısa (~40 sn)</option>
+                                    <option value="medium" selected>Orta (~60 sn)</option>
+                                    <option value="long">Uzun (~85 sn)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Yol Ayrımı Sayısı</label>
+                                <select id="race-set-split-count">
+                                    <option value="2">2 Ayrım</option>
+                                    <option value="3" selected>3 Ayrım</option>
+                                    <option value="4">4 Ayrım</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="range-label-row">
+                                <span><i class="fas fa-tachometer-alt"></i> Araç Hızı</span>
+                                <strong id="race-set-speed-val" class="range-val-badge">%100 (Normal)</strong>
+                            </label>
+                            <input type="range" id="race-set-speed" class="admin-range" min="60" max="150" step="5" value="100" oninput="updateRaceSpeedLabel(this.value)">
+                        </div>
+
+                        <div class="admin-two-col">
+                            <div class="form-group">
+                                <label><i class="fas fa-crosshairs"></i> Lazer Aim-Assist Seviyesi</label>
+                                <select id="race-set-aim-assist">
+                                    <option value="off">Kapalı (Saf Beceri)</option>
+                                    <option value="low">Düşük</option>
+                                    <option value="medium" selected>Orta (Önerilen)</option>
+                                    <option value="high">Yüksek (Stand Kolay)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sürüş Modu</label>
+                                <select id="race-set-auto-drive">
+                                    <option value="false" selected>Tam Kontrol (Manuel Gaz)</option>
+                                    <option value="true">Otomatik Gaz (Kolay)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="admin-two-col">
+                            <div class="form-group">
+                                <label>Lazer Mini Oyun Süresi (sn)</label>
+                                <input type="number" id="race-set-laser-dur" min="6" max="30" value="12">
+                            </div>
+                            <div class="form-group">
+                                <label>Drone Hızı (Cesaret)</label>
+                                <select id="race-set-drone-speed">
+                                    <option value="slow">🟢 Yavaş</option>
+                                    <option value="normal" selected>🟡 Normal</option>
+                                    <option value="fast">🔴 Hızlı</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="admin-two-col">
+                            <div class="form-group">
+                                <label>Duba (Engel) Yoğunluğu</label>
+                                <select id="race-set-obstacles">
+                                    <option value="off">Kapalı (Engelsiz)</option>
+                                    <option value="low">Az</option>
+                                    <option value="normal" selected>Normal</option>
+                                    <option value="high">Çok</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bilgi Sorusu Süresi (sn)</label>
+                                <input type="number" id="race-set-bilgi-time" min="8" max="45" value="15">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Bilgi Yolu Doğru Cevap Süre İndirimi (Orta, sn)</label>
+                            <input type="number" id="race-set-quiz-bonus" min="2" max="15" value="5">
+                        </div>
+
+                        <div class="json-actions" style="margin-top:8px;">
+                            <button class="save-btn settings-save-btn" style="margin-top:0;flex:2;" onclick="saveRaceSettings()">
+                                <i class="fas fa-save"></i> Yarış Ayarlarını Kaydet
+                            </button>
+                            <button class="json-btn reset-btn" style="flex:1;" onclick="resetRaceSettings()" title="Varsayılan değerlere döndür">
+                                <i class="fas fa-undo"></i> Sıfırla
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bilgi Yarışması Ayarları -->
                     <div class="admin-panel-section settings-section">
-                        <h3><i class="fas fa-sliders-h"></i> Yarışma Ayarları</h3>
-                        
+                        <h3><i class="fas fa-sliders-h"></i> Bilgi Yarışması Ayarları</h3>
                         <div class="form-group">
                             <label>Toplam Soru Sayısı</label>
                             <input type="number" id="settings-question-count" min="1" max="20" value="5">
                         </div>
-
                         <div class="form-group">
                             <label>Zorluk Dağılımı</label>
-                            <div class="difficulty-distribution" id="difficulty-distribution">
-                                <!-- JS tarafından doldurulacak -->
-                            </div>
+                            <div class="difficulty-distribution" id="difficulty-distribution"></div>
                         </div>
-
                         <div class="form-group">
                             <label>Soru Başına Süre (saniye)</label>
                             <input type="number" id="settings-time-per-question" min="5" max="120" value="15">
-                            <small style="color:#8b949e;font-size:0.75rem;">Toplam süre = soru sayısı × bu değer</small>
                         </div>
-
-                        <button class="save-btn settings-save-btn" onclick="saveSettings()"><i class="fas fa-cog"></i> Ayarları Kaydet</button>
+                        <button class="save-btn settings-save-btn" onclick="saveSettings()">
+                            <i class="fas fa-cog"></i> Bilgi Ayarlarını Kaydet
+                        </button>
                     </div>
 
-                    <!-- Soru Ekleme Formu -->
+                    <!-- Yeni Soru Ekle -->
                     <div class="admin-panel-section form-section">
                         <h3><i class="fas fa-plus-circle"></i> Yeni Soru Ekle</h3>
-                        
                         <div class="form-group">
                             <label>Soru Metni</label>
-                            <textarea id="new-q-text" rows="3" placeholder="Örn: Otonom araçlarda engellerden kaçınmak için..."></textarea>
+                            <textarea id="new-q-text" rows="2" placeholder="Örn: Otonom araçlarda engellerden kaçınmak için..."></textarea>
                         </div>
-
                         <div class="options-grid">
+                            <div class="form-group"><label>A Şıkkı</label><input type="text" id="opt-0" placeholder="A seçeneği"></div>
+                            <div class="form-group"><label>B Şıkkı</label><input type="text" id="opt-1" placeholder="B seçeneği"></div>
+                            <div class="form-group"><label>C Şıkkı</label><input type="text" id="opt-2" placeholder="C seçeneği"></div>
+                            <div class="form-group"><label>D Şıkkı</label><input type="text" id="opt-3" placeholder="D seçeneği"></div>
+                        </div>
+                        <div class="admin-two-col">
                             <div class="form-group">
-                                <label>A Şıkkı</label>
-                                <input type="text" id="opt-0" placeholder="A seçeneği">
+                                <label>Doğru Cevap</label>
+                                <select id="correct-opt">
+                                    <option value="0">A Şıkkı</option>
+                                    <option value="1">B Şıkkı</option>
+                                    <option value="2">C Şıkkı</option>
+                                    <option value="3">D Şıkkı</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>B Şıkkı</label>
-                                <input type="text" id="opt-1" placeholder="B seçeneği">
-                            </div>
-                            <div class="form-group">
-                                <label>C Şıkkı</label>
-                                <input type="text" id="opt-2" placeholder="C seçeneği">
-                            </div>
-                            <div class="form-group">
-                                <label>D Şıkkı</label>
-                                <input type="text" id="opt-3" placeholder="D seçeneği">
+                                <label>Zorluk</label>
+                                <select id="difficulty-opt">
+                                    <option value="kolay">🟢 Kolay</option>
+                                    <option value="orta">🟡 Orta</option>
+                                    <option value="zor">🔴 Zor</option>
+                                </select>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label>Doğru Cevap Hangisi?</label>
-                            <select id="correct-opt">
-                                <option value="0">A Şıkkı Doğru</option>
-                                <option value="1">B Şıkkı Doğru</option>
-                                <option value="2">C Şıkkı Doğru</option>
-                                <option value="3">D Şıkkı Doğru</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Zorluk Seviyesi</label>
-                            <select id="difficulty-opt">
-                                <option value="kolay">🟢 Kolay</option>
-                                <option value="orta">🟡 Orta</option>
-                                <option value="zor">🔴 Zor</option>
-                            </select>
-                        </div>
-
-                        <button class="save-btn" onclick="addQuestion()"><i class="fas fa-save"></i> Soruyu Veritabanına Ekle</button>
+                        <button class="save-btn" onclick="addQuestion()"><i class="fas fa-save"></i> Soruyu Ekle</button>
                     </div>
                 </div>
 
-                <!-- Sağ Kolon: Mevcut Sorular + Sıralama -->
+                <!-- Sağ Kolon: Mevcut Sorular + İki Modlu Sıralama Yönetimi -->
                 <div class="admin-right-col">
                     <div class="admin-panel-section list-section">
                         <h3><i class="fas fa-database"></i> Mevcut Sorular (<span id="q-count">0</span>)</h3>
@@ -185,22 +571,35 @@
                         </div>
                         <div id="questions-list"></div>
                         <div class="json-actions">
-                            <button class="json-btn export-btn" onclick="exportQuestions()" title="Soruları questions.js olarak indir"><i class="fas fa-download"></i> Dışa Aktar</button>
-                            <button class="json-btn reset-btn" onclick="reloadFromFile()" title="questions.js dosyasından yeniden yükle (sayfayı yenilemeden)"><i class="fas fa-sync-alt"></i> Dosyadan Yenile</button>
+                            <button class="json-btn export-btn" onclick="exportQuestions()"><i class="fas fa-download"></i> Dışa Aktar</button>
+                            <button class="json-btn reset-btn" onclick="reloadFromFile()"><i class="fas fa-sync-alt"></i> Dosyadan Yenile</button>
                         </div>
                     </div>
 
                     <div class="admin-panel-section leaderboard-admin-section">
                         <h3><i class="fas fa-trophy"></i> Sıralama Yönetimi</h3>
+                        <div class="admin-lb-tabs">
+                            <button class="filter-btn active" data-alb="race" onclick="switchAdminLbTab('race', this)">🏎️ Yarış Modu</button>
+                            <button class="filter-btn" data-alb="quiz" onclick="switchAdminLbTab('quiz', this)">🧠 Bilgi Yarışması</button>
+                        </div>
                         <div id="admin-leaderboard-list"></div>
-                        <button class="save-btn clear-lb-btn" onclick="clearLeaderboard()"><i class="fas fa-trash"></i> Sıralamayı Temizle</button>
+                        <div class="json-actions" style="margin-top:12px;">
+                            <button class="json-btn clear-single-btn" onclick="clearCurrentAdminLeaderboard()"><i class="fas fa-trash"></i> Bu Modu Temizle</button>
+                            <button class="json-btn clear-all-btn" onclick="clearAllLeaderboards()"><i class="fas fa-trash-alt"></i> Tümünü Temizle</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Scripts (Classic order for 100% file:// & offline compatibility!) -->
+    <script src="lib/three.min.js"></script>
     <script src="questions.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/gamepad.js"></script>
+    <script src="js/barkut-model.js"></script>
+    <script src="js/race-game.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
